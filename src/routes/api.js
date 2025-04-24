@@ -81,3 +81,5 @@ router.get('/hero', (req, res) => {
     res.status(500).json({ error: 'Failed to load hero data' });
   }
 });
+
+module.exports = router;
