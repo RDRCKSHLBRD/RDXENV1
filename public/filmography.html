@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Filmography</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Filmography | RDXENV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css"> <!-- Global styles -->
+  <link rel="stylesheet" href="/css/filmography.css"> <!-- Filmography specific styles -->
 </head>
 
 <body>
@@ -14,8 +16,9 @@
     <nav class="nav">
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/filmography">Filmography</a></li>
-        <!-- Add more links as needed -->
+        <li><a href="/filmography" class="active">Filmography</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -23,17 +26,9 @@
   <main>
     <section id="filmography">
       <h2>Film Projects</h2>
-      <!-- Add your filmography content here -->
+      <!-- Filter controls will be added by JavaScript -->
       <div class="film-container">
-        <div class="film">
-          <h3>Film Title 1</h3>
-          <p>Description of the first film.</p>
-        </div>
-        <div class="film">
-          <h3>Film Title 2</h3>
-          <p>Description of the second film.</p>
-        </div>
-        <!-- Add more films as necessary -->
+        <!-- Films will be populated by JavaScript -->
       </div>
     </section>
   </main>
@@ -42,7 +37,9 @@
     <p>&copy; 2024 RDXENV | Roderick Shoolbraid. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- JavaScript files -->
+  <script src="/js/utils.js"></script>
+  <script src="/js/filmography.js"></script>
 </body>
 
 </html>

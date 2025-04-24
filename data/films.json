@@ -1,0 +1,70 @@
+{
+  "filmography": [
+    {
+      "id": "films-of-nature",
+      "title": "Films of Nature",
+      "year": "2019",
+      "client": "Interstellar Packages",
+      "description": "An ambient visual journey through natural landscapes, synchronized with atmospheric soundscapes from the Interstellar Packages catalog.",
+      "thumbnailUrl": "/assets/images/Place1.svg",
+      "videoUrl": "#",
+      "duration": "12:34",
+      "tags": ["ambient", "nature", "experimental"]
+    },
+    {
+      "id": "tidal",
+      "title": "Tidal",
+      "year": "2020",
+      "client": "Interstellar Packages",
+      "description": "A meditative exploration of coastal rhythms and oceanic textures, blending visual poetry with minimalist sound design.",
+      "thumbnailUrl": "/assets/images/Place2.svg",
+      "videoUrl": "#",
+      "duration": "8:17",
+      "tags": ["ocean", "minimalist", "meditative"]
+    },
+    {
+      "id": "serenity",
+      "title": "Serenity",
+      "year": "2010",
+      "client": "Lynn Demers",
+      "description": "A cinematic visualization of Lynn's coaching philosophy, exploring themes of inner peace and mindfulness.",
+      "thumbnailUrl": "/assets/images/Place3.svg",
+      "videoUrl": "#",
+      "duration": "15:22",
+      "tags": ["coaching", "mindfulness", "documentary"]
+    },
+    {
+      "id": "sakura-kimonos",
+      "title": "The Sakura Kimonos",
+      "year": "2012",
+      "client": "Lynn Demers",
+      "description": "A visual story of traditional Japanese craftsmanship and contemporary application in Lynn's coaching practice.",
+      "thumbnailUrl": "/assets/images/Place4.svg",
+      "videoUrl": "#",
+      "duration": "18:05",
+      "tags": ["japan", "traditional", "craftsmanship"]
+    },
+    {
+      "id": "jikan",
+      "title": "Jikan",
+      "year": "2015",
+      "client": "Lynn Demers",
+      "description": "An exploration of time ('jikan' in Japanese) and its perception in different cultural contexts and mindfulness practices.",
+      "thumbnailUrl": "/assets/images/JIKAN-sansNOM-24smW.png",
+      "videoUrl": "#",
+      "duration": "21:43",
+      "tags": ["time", "perception", "mindfulness"]
+    },
+    {
+      "id": "aracna",
+      "title": "ARACNA",
+      "year": "2018",
+      "client": "Tanya Slingsby",
+      "description": "A surreal journey through Tanya's web-inspired installations, exploring themes of connection and entrapment.",
+      "thumbnailUrl": "/assets/images/Place1.svg",
+      "videoUrl": "#",
+      "duration": "14:52",
+      "tags": ["surreal", "contemporary art", "installation"]
+    }
+  ]
+}

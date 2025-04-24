@@ -1,0 +1,39 @@
+{
+  "about": {
+    "title": "About:",
+    "paragraphs": [
+      "With three decades of expertise in fine art, graphic design, content creation, and audio production, I bring a holistic perspective to every project. My approach blends functional minimalism with powerful color and composition to create impactful solutions.",
+      "I prioritize understanding the 'why' behind each design challenge, applying design thinking and UX principles to ensure projects excel in their domains. This innovative methodology crafts distinctive designs that resonate with users and achieve client objectives.",
+      "Believing in design's power to solve problems and forge connections, I consider every aspect of the user journey. I integrate UI design, UX principles, and digital marketing strategies to create cohesive, effective solutions aligned with client goals.",
+      "My process fuses AI tools with human creativity and experimental methods, enabling rapid iteration and boundary-pushing innovation. The result: tailored solutions that exceed expectations, drive engagement, and deliver tangible value for your brand."
+    ]
+  },
+  "hero": {
+    "title": "RDXENV | Creative Technology",
+    "subtitle": "Design • Development • Digital Experiences",
+    "tagline": "Crafting meaningful digital solutions at the intersection of art and technology."
+  },
+  "projects": {
+    "title": "Projects | Clients",
+    "subtitle": "A showcase of selected collaborations"
+  },
+  "filmography": {
+    "title": "Filmography",
+    "subtitle": "Visual storytelling through time and space",
+    "description": "Explore a collection of visual narratives created for clients and personal projects, each capturing a unique perspective on design, art, and human experience."
+  },
+  "contact": {
+    "title": "Contact >",
+    "email": "info@rdxenv.com",
+    "phone": "+1 (555) 123-4567",
+    "social": {
+      "linkedin": "https://linkedin.com/in/rdxenv",
+      "instagram": "https://instagram.com/rdxenv",
+      "vimeo": "https://vimeo.com/rdxenv"
+    },
+    "message": "Interested in working together? Feel free to reach out through any of these channels."
+  },
+  "footer": {
+    "copyright": "© 2024 RDXENV | Roderick Shoolbraid. All rights reserved."
+  }
+}

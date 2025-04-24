@@ -1,0 +1,94 @@
+{
+  "clients": [
+    {
+      "id": "interstellar-packages",
+      "name": "Interstellar Packages",
+      "shortName": "IP",
+      "logo": "/assets/images/IP_LOGO-aug24.svg",
+      "period": "2003 - Present",
+      "tagline": "Experimental Ambient Label",
+      "description": "Innovative ambient music label with 20 self-produced albums, featuring custom-designed covers and typography. Created videos including \"Films of Nature\" and \"Tidal.\" Developed label/store platform using HTML, CSS, JavaScript, React, Node.js, Express.js, PostgreSQL, and Google Cloud for content delivery. Implemented version control with Git and GitHub, deploying the backend on Render and the frontend on Netlify.",
+      "links": [
+        {
+          "id": "site",
+          "text": "Site/App",
+          "url": "https://interstellar-packages.netlify.app/",
+          "type": "app"
+        },
+        {
+          "id": "films-of-nature",
+          "text": "Films of Nature",
+          "url": "#",
+          "type": "film"
+        },
+        {
+          "id": "tidal",
+          "text": "Tidal",
+          "url": "#",
+          "type": "film"
+        }
+      ],
+      "order": 1
+    },
+    {
+      "id": "lynn-demers",
+      "name": "Lynn Demers",
+      "shortName": "LD",
+      "logo": "/assets/images/LD_LOGO24.svg",
+      "period": "2008 - Present",
+      "tagline": "Strategic Brand Evolution",
+      "description": "Since 2008, our collaboration with Lynn has transformed her brand through comprehensive creative initiatives. The partnership spans from foundational design work—crafting logos and corporate identity systems—to producing compelling visual narratives like \"Serenity,\" \"Sakura Kimonos,\" and \"Jikan.\" We've strengthened her market presence through strategic social media content and innovative tools, including the \"Value Deck\" coaching aid that bridges physical and digital engagement. As the brand evolves, we're leading the transition to digital solutions, developing intuitive applications that maintain brand authenticity while meeting contemporary client needs. This enduring partnership exemplifies our commitment to delivering integrated design solutions that anticipate and adapt to changing market dynamics.",
+      "links": [
+        {
+          "id": "serenity",
+          "text": "Serenity",
+          "url": "#",
+          "type": "film"
+        },
+        {
+          "id": "sakura-kimonos",
+          "text": "The Sakura Kimonos",
+          "url": "#",
+          "type": "film"
+        },
+        {
+          "id": "jikan",
+          "text": "Jikan",
+          "url": "#",
+          "type": "film"
+        },
+        {
+          "id": "value-deck",
+          "text": "Value Deck | Prototype",
+          "url": "#",
+          "type": "app"
+        }
+      ],
+      "order": 2
+    },
+    {
+      "id": "tanya-slingsby",
+      "name": "Tanya Slingsby",
+      "shortName": "TS",
+      "logo": "/assets/images/TSLOGO_24-1.svg",
+      "period": "2015 - Present",
+      "tagline": "Contemporary Artwork",
+      "description": "Collaborative partnership with contemporary artist Tanya Slingsby, developing digital presence and multimedia exhibitions. Projects include web gallery implementation, video production, and interactive installations that merge traditional art with digital experiences.",
+      "links": [
+        {
+          "id": "aracna",
+          "text": "FILM: ARACNA",
+          "url": "#",
+          "type": "film"
+        },
+        {
+          "id": "online-gallery",
+          "text": "Online Gallery | Prototype",
+          "url": "#",
+          "type": "app"
+        }
+      ],
+      "order": 3
+    }
+  ]
+}

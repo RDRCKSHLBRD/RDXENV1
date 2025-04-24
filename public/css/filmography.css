@@ -1,0 +1,201 @@
+/* Filmography section styles */
+
+/* Header customizations for filmography page */
+body.filmography-page header {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Film filters */
+.film-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #225f6e;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.filter-group label {
+  margin-right: 10px;
+  font-size: 0.9rem;
+}
+
+.filter-group select {
+  background-color: #27332d;
+  color: #ebefdf;
+  border: 1px solid #829d9e;
+  padding: 0.5rem;
+  border-radius: 3px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+}
+
+#reset-filters {
+  background-color: #184551;
+  color: #ebefdf;
+  border: 1px solid #829d9e;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+#reset-filters:hover {
+  background-color: #a0c0c0;
+  color: #225f6e;
+}
+
+/* Film grid layout */
+.film-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.film {
+  background-color: #225f6e;
+  color: #ebefdf;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.film:hover {
+  transform: translateY(-5px);
+}
+
+.film-thumbnail {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.film-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.film:hover .film-thumbnail img {
+  transform: scale(1.05);
+}
+
+.film-details {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.film h3 {
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #a0c0c0;
+}
+
+.film-year {
+  font-weight: 300;
+  color: #829d9e;
+  font-size: 0.9rem;
+}
+
+.film-client {
+  margin-bottom: 5px;
+  font-size: 0.85rem;
+  color: #a0c0c0;
+}
+
+.film-duration {
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  color: #829d9e;
+}
+
+.film-description {
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.film-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.tag {
+  background-color: #184551;
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  border-radius: 3px;
+  color: #a0c0c0;
+}
+
+.watch-btn {
+  align-self: flex-start;
+  background-color: #184551;
+  color: #ebefdf;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.watch-btn:hover {
+  background-color: #a0c0c0;
+  color: #225f6e;
+}
+
+/* Description paragraph */
+#filmography .description {
+  border: none;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  color: #a0c0c0;
+  max-width: 800px;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .film-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .film-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filter-group {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .filter-group select {
+    width: 100%;
+  }
+  
+  #reset-filters {
+    width: 100%;
+  }
+}

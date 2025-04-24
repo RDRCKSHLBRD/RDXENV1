@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "title": "RDXENV",
+    "subtitle": "Rodux Environment",
+    "tagline": "Design • Development • Digital Experience",
+    "backgroundImage": "/assets/images/1600xPLCHLDR.png",
+    "ctaText": "Explore Projects",
+    "ctaLink": "#projects",
+    "animation": {
+      "enabled": true,
+      "type": "fade-in"
+    }
+  },
+  "featuredClients": [
+    {
+      "id": "interstellar-packages",
+      "name": "Interstellar Packages",
+      "logo": "/assets/images/IP_LOGO-aug24.svg",
+      "featured": true
+    },
+    {
+      "id": "lynn-demers",
+      "name": "Lynn Demers",
+      "logo": "/assets/images/LD_LOGO24.svg", 
+      "featured": true
+    },
+    {
+      "id": "tanya-slingsby",
+      "name": "Tanya Slingsby",
+      "logo": "/assets/images/TSLOGO_24-1.svg",
+      "featured": true
+    }
+  ],
+  "introduction": {
+    "heading": "Creative Solutions at the Intersection of Art & Technology",
+    "text": "RDXENV brings decades of expertise in design, development, and digital media to create meaningful experiences that resonate with audiences and achieve client objectives.",
+    "ctaText": "Learn More",
+    "ctaLink": "#about"
+  }
+}

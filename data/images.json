@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "background": "/assets/images/1600xPLCHLDR.png",
+    "logo": "/assets/images/IP_LOGO-aug24.svg"
+  },
+  "placeholders": {
+    "project": "/assets/images/1600xPLCHLDR.png",
+    "client": "/assets/images/1600xPLCHLDR.png",
+    "film": "/assets/images/1600xPLCHLDR.png"
+  },
+  "logos": {
+    "interstellar-packages": "/assets/images/IP_LOGO-aug24.svg",
+    "lynn-demers": "/assets/images/LD_LOGO24.svg",
+    "tanya-slingsby": "/assets/images/TSLOGO_24-1.svg",
+    "rdxenv": "/assets/images/RDXENV_LOGO.svg"
+  },
+  "projects": {
+    "jikan": "/assets/images/JIKAN-sansNOM-24smW.png"
+  },
+  "films": {
+    "placeholder1": "/assets/images/Place1.svg",
+    "placeholder2": "/assets/images/Place2.svg",
+    "placeholder3": "/assets/images/Place3.svg",
+    "placeholder4": "/assets/images/Place4.svg"
+  }
+}
