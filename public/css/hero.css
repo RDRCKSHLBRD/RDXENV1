@@ -14,7 +14,7 @@
   color: #ebefdf;
   text-align: center;
 }
-
+/*
 #hero-section::before {
   content: '';
   position: absolute;
@@ -25,6 +25,14 @@
   background: #30494C;
   z-index: 1;
 }
+*/
+
+.hero-block {
+  background-color: #184551;
+
+}
+
+
 
 .hero-content {
   z-index: 2;

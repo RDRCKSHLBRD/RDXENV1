@@ -1,8 +1,8 @@
 
 {
   "targetSelector": "#hero-section",
-  "minSize": 80,
-  "maxDepth": 4,
+  "minSize": 1,
+  "maxDepth": 3,
   "ratios": [
     { "x": 1, "y": 1 },
     { "x": 2, "y": 1 },
@@ -12,8 +12,7 @@
   ],
   "blockBackgrounds": [
     "/assets/blockLib/BLOCK1.svg",
-    "/assets/blockLib/BLOCK2.svg",
-    "/assets/blockLib/BLOCK3.svg"
+    "/assets/blockLib/BLOCK2.svg"
   ],
   "contentTextColor": "#ebefdf",
   "contentBackgroundColor": "rgba(34, 95, 110, 0.7)"

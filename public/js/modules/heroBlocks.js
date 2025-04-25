@@ -14,16 +14,20 @@ function shuffle(array) {
 // --- Modified getRandomBackground function ---
 function getRandomBackground(backgrounds) {
   if (!backgrounds || backgrounds.length === 0) {
-    // Return a fallback color or empty string if no backgrounds defined
     console.warn("No block backgrounds found in config.");
-    return 'background-color: #cccccc;'; // Simple fallback grey
+    return 'background-color: #cccccc;'; // Fallback grey
   }
   const shuffledBackgrounds = shuffle([...backgrounds]);
   const selectedBg = shuffledBackgrounds[0];
 
-  // Return CSS string for background image
-  // Ensure path is correct (should be relative to public root)
-  return `background-image: url('${selectedBg}'); background-size: cover; background-position: center;`;
+  // Generate the CSS string
+  const cssString = `background-image: url('${selectedBg}'); background-size: cover; background-position: center;`;
+
+  // --- ADD THIS LINE FOR DEBUGGING ---
+  console.log("Generated background CSS:", cssString);
+  // ------------------------------------
+
+  return cssString;
 }
 
 // --- Core Block Generation Logic ---
