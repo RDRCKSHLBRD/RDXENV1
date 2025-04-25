@@ -1,0 +1,52 @@
+{
+  "colors": [
+    {
+      "name": "Snow Clouds",
+      "hex": "#859E98"
+    },
+    {
+      "name": "Details",
+      "hex": "#0E5960"
+    },
+    {
+      "name": "Submarine",
+      "hex": "#264951"
+    },
+    {
+      "name": "Dover",
+      "hex": "#D9E7EE"
+    },
+    {
+      "name": "Modern Graph",
+      "hex": "#3b5450"
+    },
+    {
+      "name": "Modern Teal 1",
+      "hex": "#2a6377"
+    },
+    {
+      "name": "Approval",
+      "hex": "#0A375B"
+    },
+    {
+      "name": "Blue Skies",
+      "hex": "#065A82"
+    },
+    {
+      "name": "Porpoise",
+      "hex": "#C5D8D6"
+    },
+    {
+      "name": "Narwal IV",
+      "hex": "#225F6E"
+    },
+    {
+      "name": "a la Mode",
+      "hex": "#E6EEEF"
+    },
+    {
+      "name": "Placeholder",
+      "hex": "#D5E2E0"
+    }
+  ]
+}

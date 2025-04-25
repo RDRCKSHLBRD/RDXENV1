@@ -7,6 +7,7 @@
   padding: 5rem 1rem; /* Example: more vertical padding */
   overflow: hidden;
   box-sizing: border-box;
+  background-color: #14467A;
   /* Remove display: grid/flex from the container itself */
 }
 
