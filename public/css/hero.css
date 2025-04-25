@@ -2,7 +2,7 @@
 
 #hero-section {
   position: relative;
-  min-height: 25rem; /* Base height */
+  min-height: 50rem; /* Base height */
   padding: 6rem 1rem; /* Default padding */
   overflow: hidden;
   box-sizing: border-box;
@@ -143,7 +143,7 @@
 /* --- Larger Screens --- */
 @media (min-width: 1200px) {
    #hero-section {
-      min-height: 30rem;
+      min-height: 50rem;
       padding: 7rem 1rem;
    }
    .hero-content-box {

@@ -77,6 +77,7 @@ header {
 
 .header-logo {
   height: 9em; /* Example height, adjust as needed */
+  padding-bottom: .5em;
   width: auto; /* Maintain aspect ratio */
   display: block; /* Remove extra space below image */
   /* Add margin if needed, e.g., margin-right: 1rem; if you add text next to it */
