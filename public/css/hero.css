@@ -1,14 +1,15 @@
 /* Hero Section Styles - REFACTORED FOR SIMPLIFIED LAYERS */
 
 #hero-section {
-  position: relative; /* Crucial for absolute positioning of children */
-  min-height: 60vh; /* STARTING base height - adjust as needed */
-  /* Let's use padding to help control height and center content vertically */
-  padding: 5rem 1rem; /* Example: more vertical padding */
+  position: relative;
+  min-height: 25rem; /* Base height */
+  padding: 6rem 1rem; /* Default padding */
   overflow: hidden;
   box-sizing: border-box;
-  background-color: #14467A;
-  /* Remove display: grid/flex from the container itself */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #14467A; /* Fallback background color */
 }
 
 /* Background Layer */
@@ -18,36 +19,29 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Behind content */
+  z-index: 1;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* Optional: Add a subtle overlay */
-  /* &::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); // Dark overlay example
-  } */
+  /* background-image is set inline by heroBlocks.js */
 }
 
-/* Content Layer - Takes up space and centers the box */
+/* Content Layer */
 .hero-content-layer {
-  position: relative; /* Sits above background */
+  position: relative;
   z-index: 2;
-  display: flex; /* Use flexbox to center the content box */
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%; /* Takes full height of the padded container */
   box-sizing: border-box;
 }
 
-/* Content Box - The visible box with text */
+/* Content Box */
 .hero-content-box {
-  max-width: 90%; /* Limit width */
-  width: 600px; /* Example fixed max-width, adjust as needed */
-  padding: clamp(1.5rem, 5vmin, 2.5rem); /* Responsive padding */
+  max-width: 90%;
+  width: 600px; /* Max width for larger screens */
+  padding: clamp(1.5rem, 5vmin, 2.5rem);
   border-radius: 4px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
@@ -55,22 +49,9 @@
   /* Background color and text color set by JS */
 }
 
-/* Keyframe for fade-in (ensure it's defined) */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Apply animation */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 1s 0.5s ease-in forwards;
-}
-
 /* --- Text element styles inside the content box --- */
-/* Using clamp for responsive font sizes */
 .hero-title {
-  font-size: clamp(1.8rem, 5vw, 2.8rem); /* Adjusted clamp range */
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   margin-bottom: 0.5rem;
   font-weight: 400;
   letter-spacing: 1px;
@@ -78,16 +59,16 @@
 }
 
 .hero-subtitle {
-  font-size: clamp(1.2rem, 4vw, 1.6rem); /* Adjusted clamp range */
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
   margin-bottom: 1rem;
   font-weight: 300;
 }
 
 .hero-tagline {
-  font-size: clamp(1rem, 3.5vw, 1.2rem); /* Adjusted clamp range */
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
   margin-bottom: 1.5rem;
   font-weight: 300;
-  color: #a0c0c0; /* Example color */
+  color: #a0c0c0;
   line-height: 1.6;
 }
 
@@ -99,7 +80,7 @@
   color: #ebefdf;
   text-decoration: none;
   border: 1px solid #829d9e;
-  font-size: clamp(0.9rem, 2.5vw, 1rem); /* Responsive font size */
+  font-size: clamp(0.9rem, 2vw, 1rem);
   transition: all 0.3s ease;
   border-radius: 3px;
   cursor: pointer;
@@ -112,49 +93,64 @@
   outline: none;
 }
 
+/* --- Animation --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s 0.5s ease-in forwards;
+}
 
 /* === RESPONSIVE STYLES === */
 
 /* --- Mobile --- */
 @media (max-width: 768px) {
   #hero-section {
-    min-height: 50vh; /* Adjust mobile height */
-    padding: 3rem 1rem; /* Adjust mobile padding */
+    min-height: 20rem;
+    padding: 4rem 1rem;
   }
 
   .hero-content-box {
-     width: 90%; /* Allow more width on mobile */
+     width: auto; /* Allow flexible width */
+     max-width: 90%;
      padding: clamp(1rem, 4vmin, 1.8rem);
   }
 
-  /* Adjust clamp ranges further for smaller screens if needed */
-  .hero-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
-  .hero-subtitle { font-size: clamp(1.1rem, 5vw, 1.4rem); }
-  .hero-tagline { font-size: clamp(0.9rem, 4vw, 1.1rem); }
+  .hero-title { font-size: clamp(1.6rem, 6vw, 2.0rem); }
+  .hero-subtitle { font-size: clamp(1.1rem, 4.5vw, 1.3rem); }
+  .hero-tagline { font-size: clamp(0.9rem, 3.5vw, 1.0rem); }
   .hero-cta { font-size: clamp(0.8rem, 3vw, 0.9rem); padding: 0.6rem 1.2rem;}
 
   /* --- Mobile Landscape --- */
-  /* We might not need drastically different styles now, */
-  /* but we can adjust padding or min-height */
   @media (orientation: landscape) {
     #hero-section {
-      min-height: 60vh; /* Maybe slightly more height in landscape */
-      padding: 2rem 1rem; /* Less vertical padding */
+      min-height: 18rem;
+      padding: 2rem 1rem;
     }
      .hero-content-box {
-        /* Potentially allow slightly more width */
-        max-width: 70%;
-        width: 500px;
+        max-width: 80%;
+        /* Removed fixed width from here */
      }
+     .hero-title { font-size: clamp(1.5rem, 3.5vw, 1.9rem); }
+     .hero-subtitle{ font-size: clamp(1.0rem, 2.8vw, 1.2rem); }
+     .hero-tagline { font-size: clamp(0.8rem, 2.2vw, 1.0rem); }
+     .hero-cta { font-size: clamp(0.8rem, 2vw, 0.9rem); }
   }
 }
 
 /* --- Larger Screens --- */
 @media (min-width: 1200px) {
    #hero-section {
-      padding: 7rem 1rem; /* More padding on large screens */
+      min-height: 30rem;
+      padding: 7rem 1rem;
+   }
+   .hero-content-box {
+      width: 600px; /* Apply fixed width only on larger screens */
    }
    .hero-title { font-size: clamp(2.2rem, 4vw, 3.2rem); }
    .hero-subtitle { font-size: clamp(1.4rem, 3vw, 1.8rem); }
    .hero-tagline { font-size: clamp(1.1rem, 2.5vw, 1.4rem); }
+   .hero-cta { font-size: clamp(1.0rem, 2vw, 1.1rem); }
 }
