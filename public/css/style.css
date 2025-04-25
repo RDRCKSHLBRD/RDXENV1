@@ -55,39 +55,51 @@ a.active {
   font-weight: 400;
 }
 
-/* Header styles */
+/* Header styles =============================================================================================== */
 header {
-  display: grid;
-  grid-template-columns: 1fr;
-  background-color: #225f6e;
-  padding: 0.5rem 0;
+  display: flex; /* Use flexbox for easier alignment */
+  justify-content: space-between; /* Pushes logo/name to left, nav to right */
+  align-items: center; /* Vertically center items */
+  background-color: #225f6e; /* Your existing color */
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
+  /* Remove grid-template-columns if previously set on header */
 }
 
 .name-container {
-  display: grid;
-  justify-content: start;
-  padding: 5px;
-  margin: 0 1rem;
+  /* display: grid; */ /* Changed to flex for potentially simpler alignment with nav */
+  /* justify-content: start; */ /* Handled by header's justify-content */
+  /* padding: 5px; */ /* Padding handled by header or specific elements */
+  margin: 0; /* Remove default margins if any */
+  display: flex; /* Allow items inside (like logo + text) to align */
+  align-items: center; 
 }
 
+.header-logo {
+  height: 9em; /* Example height, adjust as needed */
+  width: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  /* Add margin if needed, e.g., margin-right: 1rem; if you add text next to it */
+}
+
+/* Keep your existing .nav styles */
 .nav ul {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
+  display: flex; /* Changed from grid for simpler horizontal layout */
   gap: 20px;
   padding: 0;
   list-style-type: none;
-  margin: 0.5rem 1rem;
+  
+  margin: 0; /* Reset margin */
 }
 
-.nav li {
-  text-align: center;
-}
+
 
 .nav a {
+
   color: #829d9e;
   text-decoration: none;
   padding: 10px 15px;
   display: block;
+  
 }
 
 .nav a:hover {
@@ -102,7 +114,7 @@ header {
   color: #708090;
 }
 
-/* Main content sections */
+/* Main content sections  =========================================================*/
 main {
   max-width: 1200px;
   margin: 0 auto;

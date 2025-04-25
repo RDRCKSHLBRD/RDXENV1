@@ -82,4 +82,17 @@ router.get('/hero', (req, res) => {
   }
 });
 
+// heroconfig
+
+router.get('/hero/config', (req, res) => {
+  const data = readJsonFile('heroConfig.json'); // Use your existing helper function
+  if (data) {
+    res.json(data);
+  } else {
+    res.status(500).json({ error: 'Failed to load hero configuration' });
+  }
+});
+
+// Make sure this is placed before module.exports = router;
+
 module.exports = router;
