@@ -4,16 +4,19 @@
   background-image: url('/assets/images/1600xPLCHLDR.png');
   background-size: cover;
   background-position: center;
-  min-height: 80vh;
+  min-height: 80vh; /* Base/Desktop height */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  position: relative;
+  padding: 2rem; /* Base/Desktop padding */
+  position: relative; /* Needed for absolute positioning of JS blocks */
   color: #ebefdf;
   text-align: center;
+  overflow: hidden; /* Add overflow hidden to the container as a fallback */
 }
+
+/* Optional: Overlay */
 /*
 #hero-section::before {
   content: '';
@@ -22,25 +25,38 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #30494C;
-  z-index: 1;
+  background: rgba(48, 73, 76, 0.5); // Example with transparency
+  z-index: 1; // Below content
 }
 */
 
+/* Styles for the dynamically generated blocks */
 .hero-block {
-  background-color: #184551;
-
+  /* background-color set by JS */
+  /* border set by JS */
+  /* box-sizing set by JS */
+  /* overflow set by JS */
+  /* position, left, top, width, height set by JS */
 }
 
-
-
-.hero-content {
-  z-index: 2;
-  max-width: 800px;
-  opacity: 0;
-  animation: fadeIn 1s ease-in forwards;
+/* Styles for the content injected into the largest block */
+/* Note: Some styles like color, background are applied inline by JS */
+.hero-block-content {
+  position: relative; /* Ensure it's relative for potential internal absolute elements */
+  z-index: 10; /* Above hero-block backgrounds */
+  max-width: 90%; /* Limit width within its parent block */
+  margin: auto; /* Center horizontally */
+  padding: clamp(1rem, 5vmin, 2rem); /* Responsive padding */
+  border-radius: 4px; /* Optional styling */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional styling */
+  /* Ensure text alignment if not inheriting correctly */
+  text-align: center;
+  /* Animation */
+  opacity: 0; /* Start hidden for animation */
+  animation: fadeIn 1s 0.5s ease-in forwards; /* Delay animation slightly */
 }
 
+/* Keyframe for fade-in (ensure it's defined) */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -52,30 +68,40 @@
   }
 }
 
+/* Fallback class if JS animation logic isn't used/working */
 .fade-in {
   opacity: 0;
   animation: fadeIn 1s ease-in forwards;
 }
 
-.hero-title {
-  font-size: 3rem;
+/* Specific styles for elements within .hero-block-content */
+/* These might override inline styles from JS if needed, or serve as fallbacks */
+.hero-block-content h1,
+.hero-title { /* Target class or element */
+  font-size: clamp(1.8rem, 5vmin, 3rem); /* Base responsive size */
   margin-bottom: 0.5rem;
   font-weight: 400;
   letter-spacing: 1px;
+  line-height: 1.2;
 }
 
-.hero-subtitle {
-  font-size: 1.5rem;
+.hero-block-content h2,
+.hero-subtitle { /* Target class or element */
+  font-size: clamp(1.2rem, 3.5vmin, 1.8rem); /* Base responsive size */
   margin-bottom: 1rem;
   font-weight: 300;
 }
 
-.hero-tagline {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #a0c0c0;
+.hero-block-content p,
+.hero-tagline { /* Target class or element */
+  font-size: clamp(1rem, 3vmin, 1.2rem); /* Base responsive size */
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  color: #a0c0c0; /* Base color */
+  line-height: 1.6; /* Added line-height for readability */
 }
 
+/* Styles for the Call to Action button */
 .hero-cta {
   display: inline-block;
   padding: 0.8rem 1.5rem;
@@ -85,13 +111,20 @@
   border: 1px solid #829d9e;
   font-size: 1rem;
   transition: all 0.3s ease;
+  border-radius: 3px; /* Added minor rounding */
+  cursor: pointer;
 }
 
-.hero-cta:hover {
+.hero-cta:hover,
+.hero-cta:focus { /* Added focus state */
   background-color: #ebefdf;
   color: #225f6e;
+  outline: none; /* Remove default focus outline if needed */
 }
 
+
+/* --- Styles for other potential sections (if they were ever part of hero) --- */
+/* These seem unrelated to the dynamic block hero, keeping separate */
 .hero-introduction {
   background-color: #225f6e;
   padding: 2rem;
@@ -154,33 +187,78 @@
   max-height: 100%;
   object-fit: contain;
 }
+/* --- End of other sections --- */
 
-/* Responsive styles */
+
+/* === RESPONSIVE STYLES === */
 @media (max-width: 768px) {
+
+  /* Default Mobile Styles (Applied in Portrait & Landscape unless overridden below) */
   #hero-section {
-    min-height: 60vh;
-    padding: 1rem;
+    min-height: 60vh; /* Mobile default height */
+    padding: 1rem;    /* Mobile default padding */
   }
-  
+
+  /* Adjust default mobile text sizes if needed, using clamp for flexibility */
+  .hero-block-content h1,
   .hero-title {
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 6vmin, 2.2rem); /* Mobile base */
   }
-  
-  .hero-subtitle, .hero-introduction h2 {
-    font-size: 1.2rem;
+
+  .hero-block-content h2,
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 4vmin, 1.4rem); /* Mobile base */
   }
-  
+
+  .hero-block-content p,
   .hero-tagline {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 3vmin, 1.1rem); /* Mobile base */
   }
-  
+
+  /* Adjustments for other sections on mobile */
   .featured-clients {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
-  
+
   .hero-introduction {
     padding: 1rem;
   }
-}
+   .hero-introduction h2 { /* Ensure this matches hero-subtitle adjustments */
+     font-size: clamp(1.1rem, 4vmin, 1.4rem);
+   }
+
+
+  /* ---> Landscape Overrides (NESTED INSIDE max-width: 768px) <--- */
+  @media (orientation: landscape) {
+    #hero-section {
+      min-height: 55vh; /* Adjusted landscape height - tweak as needed */
+      /* Reduced height drastically might make content too cramped, use vh carefully */
+      padding: 0.5rem 1rem; /* Landscape padding */
+    }
+
+    /* Adjust text sizes for the shorter/wider landscape view */
+    .hero-block-content h1,
+    .hero-title {
+       font-size: clamp(1.5rem, 5vw, 2rem); /* Slightly smaller range for landscape */
+    }
+
+     .hero-block-content h2,
+     .hero-subtitle{
+         font-size: clamp(1rem, 3.5vw, 1.3rem); /* Smaller range */
+     }
+
+     .hero-block-content p,
+     .hero-tagline {
+         font-size: clamp(0.8rem, 2.8vw, 1rem); /* Smaller range */
+     }
+
+     /* Target the injected content block padding if needed */
+     .hero-block-content {
+        padding: clamp(0.8rem, 3vmin, 1.5rem); /* Maybe slightly less padding */
+        max-width: 80%; /* Allow slightly more width */
+     }
+  } /* End of landscape override */
+
+} /* End of max-width: 768px */
