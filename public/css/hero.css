@@ -1,59 +1,68 @@
-/* Hero Section Styles */
+/* Hero Section Styles - REFACTORED FOR CSS GRID */
 #hero-section {
+  /* Remove old flex fallback styles if they conflict */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  /* --- Core Grid Setup --- */
+  display: grid;
+  /* Example: 3 columns, auto rows - ADJUST AS NEEDED */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr); /* Example: 2 rows */
+  gap: 5px; /* Gap between blocks */
+
+  min-height: 80vh; /* Base/Desktop height */
+  padding: 5px; /* Use padding matching the gap or slightly more */
+  position: relative; /* Keep for potential future absolute elements if needed */
+  overflow: hidden; /* Prevent content overflow */
+
+  /* Keep background fallback */
   background-color: #184551;
-  background-image: url('/assets/images/1600xPLCHLDR.png');
+  background-image: url('/assets/images/1600xPLCHLDR.png'); /* This will be mostly covered by blocks */
   background-size: cover;
   background-position: center;
-  min-height: 80vh; /* Base/Desktop height */
+}
+
+/* Styles for the grid items (blocks) */
+.hero-block {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 150px; /* Minimum height for blocks */
+  border: 1px solid rgba(0,0,0,0.1); /* Optional subtle border */
+  box-sizing: border-box;
+  overflow: hidden; /* Hide overflow within blocks */
+}
+
+/* Styles specific to the block holding the content */
+.hero-block-content-container {
+  /* --- Define Grid Area --- */
+  /* Example: Make it span 2 columns and 2 rows, starting at row 1, col 1 */
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+  /* --- Flexbox for centering content *within* this grid item --- */
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem; /* Base/Desktop padding */
-  position: relative; /* Needed for absolute positioning of JS blocks */
-  color: #ebefdf;
-  text-align: center;
-  overflow: hidden; /* Add overflow hidden to the container as a fallback */
+  padding: 5%; /* Padding *inside* the content grid block */
+  background-color: transparent; /* Make the grid item itself transparent */
+  border: none; /* Remove border from the container block */
 }
 
-/* Optional: Overlay */
-/*
-#hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(48, 73, 76, 0.5); // Example with transparency
-  z-index: 1; // Below content
-}
-*/
-
-/* Styles for the dynamically generated blocks */
-.hero-block {
-  /* background-color set by JS */
-  /* border set by JS */
-  /* box-sizing set by JS */
-  /* overflow set by JS */
-  /* position, left, top, width, height set by JS */
-}
-
-/* Styles for the content injected into the largest block */
-/* Note: Some styles like color, background are applied inline by JS */
+/* Styles for the actual content box INSIDE the container */
 .hero-block-content {
-  position: relative; /* Ensure it's relative for potential internal absolute elements */
-  z-index: 10; /* Above hero-block backgrounds */
-  max-width: 90%; /* Limit width within its parent block */
-  margin: auto; /* Center horizontally */
+  position: relative; /* Allow z-index if needed later */
+  z-index: 10;
+  max-width: 90%;
+  width: fit-content; /* Adjust width to content */
+  margin: auto;
   padding: clamp(1rem, 5vmin, 2rem); /* Responsive padding */
-  border-radius: 4px; /* Optional styling */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional styling */
-  /* Ensure text alignment if not inheriting correctly */
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
-  /* Animation */
-  opacity: 0; /* Start hidden for animation */
-  animation: fadeIn 1s 0.5s ease-in forwards; /* Delay animation slightly */
+  /* Background color and text color set by JS inline style */
 }
 
 /* Keyframe for fade-in (ensure it's defined) */
@@ -68,37 +77,35 @@
   }
 }
 
-/* Fallback class if JS animation logic isn't used/working */
+/* Apply animation */
 .fade-in {
   opacity: 0;
-  animation: fadeIn 1s ease-in forwards;
+  animation: fadeIn 1s 0.5s ease-in forwards;
 }
 
-/* Specific styles for elements within .hero-block-content */
-/* These might override inline styles from JS if needed, or serve as fallbacks */
-.hero-block-content h1,
+/* --- Text element styles inside the content block --- */
 .hero-title { /* Target class or element */
-  font-size: clamp(1.8rem, 5vmin, 3rem); /* Base responsive size */
+  font-size: clamp(1.8rem, 5vmin, 3rem);
   margin-bottom: 0.5rem;
   font-weight: 400;
   letter-spacing: 1px;
   line-height: 1.2;
+  /* Color set inline by JS */
 }
 
-.hero-block-content h2,
 .hero-subtitle { /* Target class or element */
-  font-size: clamp(1.2rem, 3.5vmin, 1.8rem); /* Base responsive size */
+  font-size: clamp(1.2rem, 3.5vmin, 1.8rem);
   margin-bottom: 1rem;
   font-weight: 300;
+  /* Color set inline by JS */
 }
 
-.hero-block-content p,
 .hero-tagline { /* Target class or element */
-  font-size: clamp(1rem, 3vmin, 1.2rem); /* Base responsive size */
+  font-size: clamp(1rem, 3vmin, 1.2rem);
   margin-bottom: 1.5rem;
   font-weight: 300;
-  color: #a0c0c0; /* Base color */
-  line-height: 1.6; /* Added line-height for readability */
+  color: #a0c0c0; /* Can set a default/override here or let JS handle */
+  line-height: 1.6;
 }
 
 /* Styles for the Call to Action button */
@@ -106,159 +113,96 @@
   display: inline-block;
   padding: 0.8rem 1.5rem;
   background-color: #225f6e;
-  color: #ebefdf;
+  color: #ebefdf; /* Use text color from config? */
   text-decoration: none;
   border: 1px solid #829d9e;
   font-size: 1rem;
   transition: all 0.3s ease;
-  border-radius: 3px; /* Added minor rounding */
+  border-radius: 3px;
   cursor: pointer;
 }
 
 .hero-cta:hover,
-.hero-cta:focus { /* Added focus state */
+.hero-cta:focus {
   background-color: #ebefdf;
   color: #225f6e;
-  outline: none; /* Remove default focus outline if needed */
+  outline: none;
 }
-
-
-/* --- Styles for other potential sections (if they were ever part of hero) --- */
-/* These seem unrelated to the dynamic block hero, keeping separate */
-.hero-introduction {
-  background-color: #225f6e;
-  padding: 2rem;
-  margin-top: 2rem;
-  z-index: 2;
-  max-width: 800px;
-  border: 1px solid #829d9e;
-}
-
-.hero-introduction h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #a0c0c0;
-  font-weight: 300;
-}
-
-.hero-introduction p {
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.intro-cta {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: transparent;
-  color: #a0c0c0;
-  text-decoration: none;
-  border: 1px solid #a0c0c0;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.intro-cta:hover {
-  background-color: #a0c0c0;
-  color: #225f6e;
-}
-
-.featured-clients {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 3rem;
-  z-index: 2;
-}
-
-.featured-client {
-  background-color: rgba(34, 95, 110, 0.7);
-  padding: 1rem;
-  border: 1px solid #829d9e;
-  width: 150px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.featured-client img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-/* --- End of other sections --- */
 
 
 /* === RESPONSIVE STYLES === */
 @media (max-width: 768px) {
 
-  /* Default Mobile Styles (Applied in Portrait & Landscape unless overridden below) */
+  /* Default Mobile Styles (Portrait & Landscape unless overridden below) */
   #hero-section {
-    min-height: 60vh; /* Mobile default height */
-    padding: 1rem;    /* Mobile default padding */
+    min-height: 70vh; /* Adjusted mobile height */
+    padding: 5px;
+    /* Example: Change to 2 columns for mobile */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr); /* 3 rows to fit 6 items */
   }
 
-  /* Adjust default mobile text sizes if needed, using clamp for flexibility */
-  .hero-block-content h1,
-  .hero-title {
-    font-size: clamp(1.6rem, 6vmin, 2.2rem); /* Mobile base */
+  .hero-block-content-container {
+     /* Example: Make content container span full width on mobile */
+     grid-column: 1 / span 2;
+     grid-row: 1 / span 1; /* Place it in the first row */
+     align-items: center; /* Adjust alignment */
+     padding: 5%;
   }
 
-  .hero-block-content h2,
-  .hero-subtitle {
-    font-size: clamp(1.1rem, 4vmin, 1.4rem); /* Mobile base */
-  }
-
-  .hero-block-content p,
-  .hero-tagline {
-    font-size: clamp(0.9rem, 3vmin, 1.1rem); /* Mobile base */
-  }
-
-  /* Adjustments for other sections on mobile */
-  .featured-clients {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .hero-introduction {
-    padding: 1rem;
-  }
-   .hero-introduction h2 { /* Ensure this matches hero-subtitle adjustments */
-     font-size: clamp(1.1rem, 4vmin, 1.4rem);
+   .hero-block-content {
+      padding: clamp(0.8rem, 4vmin, 1.5rem);
    }
+
+  /* Adjust mobile text sizes */
+  .hero-title {
+    font-size: clamp(1.6rem, 6vmin, 2.2rem);
+  }
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 4vmin, 1.4rem);
+  }
+  .hero-tagline {
+    font-size: clamp(0.9rem, 3vmin, 1.1rem);
+  }
 
 
   /* ---> Landscape Overrides (NESTED INSIDE max-width: 768px) <--- */
   @media (orientation: landscape) {
     #hero-section {
-      min-height: 55vh; /* Adjusted landscape height - tweak as needed */
-      /* Reduced height drastically might make content too cramped, use vh carefully */
-      padding: 0.5rem 1rem; /* Landscape padding */
+      min-height: 75vh; /* Landscape often needs more height */
+      /* Example: Change back to 3 columns for landscape */
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr); /* Back to 2 rows */
     }
 
-    /* Adjust text sizes for the shorter/wider landscape view */
-    .hero-block-content h1,
-    .hero-title {
-       font-size: clamp(1.5rem, 5vw, 2rem); /* Slightly smaller range for landscape */
+    .hero-block-content-container {
+       /* Example: Span 2 cols, 1 row in landscape */
+       grid-column: 1 / span 2;
+       grid-row: 1 / span 1;
     }
 
-     .hero-block-content h2,
+    /* Adjust landscape text sizes slightly if needed */
+     .hero-title {
+       font-size: clamp(1.5rem, 5vw, 2rem);
+    }
      .hero-subtitle{
-         font-size: clamp(1rem, 3.5vw, 1.3rem); /* Smaller range */
+         font-size: clamp(1rem, 3.5vw, 1.3rem);
      }
-
-     .hero-block-content p,
      .hero-tagline {
-         font-size: clamp(0.8rem, 2.8vw, 1rem); /* Smaller range */
+         font-size: clamp(0.8rem, 2.8vw, 1rem);
      }
-
-     /* Target the injected content block padding if needed */
      .hero-block-content {
-        padding: clamp(0.8rem, 3vmin, 1.5rem); /* Maybe slightly less padding */
-        max-width: 80%; /* Allow slightly more width */
+        padding: clamp(0.8rem, 3vmin, 1.5rem);
      }
   } /* End of landscape override */
 
 } /* End of max-width: 768px */
+
+/* Optional: Styles for specific blocks if needed */
+/* .hero-block:nth-child(1) { ... } */
+/* .hero-block:nth-child(2) { ... } */
+
+/* Hide hero sections that might remain from old code */
+.hero-introduction, .featured-clients {
+    display: none;
+}

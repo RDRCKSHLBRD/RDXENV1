@@ -1,76 +1,78 @@
 // public/js/main.js
 
-// Import the hero block initializer
 import { initHeroBlocks } from './modules/heroBlocks.js';
 
-// --- Assumed RDXENV object and methods (likely from utils.js) ---
-// Ensure RDXENV and RDXENV.API are defined before this script runs,
-// possibly in utils.js loaded via <script> tag in HTML.
-// Example structure assumed:
-// const RDXENV = {
-//   API: {
-//     getCopy: async () => { /* fetch logic */ },
-//     getClients: async () => { /* fetch logic */ },
-//     getAllProjects: async () => { /* fetch logic */ },
-//     getHero: async () => { /* fetch logic */ }
-//   },
-//   createClientSection: (client, projects) => { /* DOM creation logic */ },
-//   generateCarousel: (projects, gridSelector, navSelector) => { /* carousel logic */ }
-// };
-// If RDXENV.API methods are not defined, replace calls below with direct fetch calls.
+// Assumes RDXENV object and methods are available globally (likely from utils.js)
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // Initialize the application
   await initApp();
 });
 
 /**
- * Initialize the application
+ * Fetches hero configuration data from the API.
+ * @returns {Promise<object|null>} - Resolves to the config data or null on error.
+ */
+async function getHeroConfig() {
+  try {
+    const response = await fetch('/api/hero/config');
+    if (!response.ok) {
+      throw new Error(`API error fetching config: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching hero config:", error);
+    return null;
+  }
+}
+
+/**
+ * Initializes the application by fetching data and rendering sections.
  */
 async function initApp() {
   console.log("Initializing app...");
   try {
-    // Load all necessary data (assuming RDXENV.API is available)
-    const copyData = await RDXENV.API.getCopy();
-    const clientsData = await RDXENV.API.getClients();
-    const projectsData = await RDXENV.API.getAllProjects();
-    const heroData = await RDXENV.API.getHero(); // Fetch hero data once
+    // Load all necessary data concurrently
+    const [copyData, clientsData, projectsData, heroData, heroConfigData] = await Promise.all([
+        RDXENV.API.getCopy(),
+        RDXENV.API.getClients(),
+        RDXENV.API.getAllProjects(),
+        RDXENV.API.getHero(),
+        getHeroConfig()
+    ]);
 
-    if (!copyData || !clientsData || !projectsData || !heroData) {
-      console.error('Failed to load required data');
-      // Optionally display an error message to the user
+    // Check if essential data loaded
+    if (!copyData || !clientsData || !projectsData || !heroData || !heroConfigData) {
+      console.error('Failed to load required data (copy, clients, projects, hero, or hero config)');
+      // Consider displaying a user-friendly error message here
       return;
     }
 
-    // ---> Initialize the dynamic hero section <---
+    // Initialize the dynamic hero section
     if (document.getElementById('hero-section')) {
-       await initHeroBlocks(heroData); // Pass fetched heroData to the module
+       initHeroBlocks(heroData, heroConfigData);
     }
-    // ---> Removed the old renderHeroSection call <---
 
-    // Render about section (using existing logic)
+    // Render other sections
     if (copyData.about && document.getElementById('about')) {
       renderAboutSection(copyData.about);
     } else {
       console.warn("About data or section element missing.");
     }
 
-    // Render client projects (using existing logic)
-    if (clientsData && clientsData.clients && projectsData && projectsData.projects && document.getElementById('client-container')) {
+    if (clientsData?.clients && projectsData?.projects && document.getElementById('client-container')) {
       renderClientProjects(clientsData.clients, projectsData.projects);
     } else {
        console.warn("Client/Project data or container element missing.");
     }
 
-    // Render contact section (using existing logic)
     if (copyData.contact && document.getElementById('contact')) {
       renderContactSection(copyData.contact);
     } else {
        console.warn("Contact data or section element missing.");
     }
 
-    // Initialize client navigation (using existing logic)
-    if (clientsData && clientsData.clients && document.querySelector('.CLientProjNAv')) {
+    // Initialize client navigation
+    if (clientsData?.clients && document.querySelector('.CLientProjNAv')) {
       initClientNavigation(clientsData.clients);
     } else {
        console.warn("Client data or navigation element missing.");
@@ -80,39 +82,37 @@ async function initApp() {
 
   } catch (error) {
     console.error('Error initializing app:', error);
-     // Optionally display an error message to the user
+    // Consider displaying a user-friendly error message here
   }
 }
 
-// --- Keep your existing functions below (renderAboutSection, renderClientProjects, etc.) ---
+// --- Section Rendering Functions ---
 
 /**
- * Render the about section
- * @param {Object} aboutData - About section data
+ * Render the about section.
+ * @param {object} aboutData - About section data from API.
  */
 function renderAboutSection(aboutData) {
   const aboutSection = document.getElementById('about');
-  if (!aboutSection || !aboutData) return; // Added check for data
+  if (!aboutSection || !aboutData) return;
 
   aboutSection.innerHTML = `
     <h2>${aboutData.title || 'About'}</h2>
-    ${(aboutData.paragraphs || []).map(paragraph => `<p>${paragraph}</p>`).join('')}
+    ${(aboutData.paragraphs || []).map(p => `<p>${p}</p>`).join('')}
   `;
 }
 
 /**
- * Render client project sections
- * @param {Array} clients - Array of client data
- * @param {Object} projects - Object containing projects by client ID
+ * Render client project sections and initialize carousels.
+ * @param {Array} clients - Array of client data.
+ * @param {object} projects - Object containing projects keyed by client ID.
  */
 function renderClientProjects(clients, projects) {
   const clientContainer = document.getElementById('client-container');
-  if (!clientContainer || !clients || !projects) return; // Added checks
+  if (!clientContainer || !clients || !projects) return;
 
-  // Clear container
-  clientContainer.innerHTML = '';
+  clientContainer.innerHTML = ''; // Clear container
 
-  // Sort clients by order property (ensure clients have 'order' property)
   const sortedClients = [...clients].sort((a, b) => (a.order || 0) - (b.order || 0));
 
   sortedClients.forEach((client, index) => {
@@ -120,44 +120,36 @@ function renderClientProjects(clients, projects) {
         console.warn("Skipping invalid client data:", client);
         return;
     }
-    // Ensure RDXENV object and method exist
-    if (typeof RDXENV !== 'undefined' && typeof RDXENV.createClientSection === 'function') {
-        // Create client section
-        const clientSection = RDXENV.createClientSection(client, projects[client.id] || []); // Pass empty array if no projects
-        if (clientSection) { // Check if section was created
+
+    // Create client section using RDXENV helper (ensure RDXENV.createClientSection exists)
+    if (typeof RDXENV?.createClientSection === 'function') {
+        const clientSection = RDXENV.createClientSection(client, projects[client.id] || []);
+        if (clientSection) {
             clientContainer.appendChild(clientSection);
         } else {
             console.warn(`Failed to create section for client: ${client.id}`);
         }
     } else {
         console.error("RDXENV.createClientSection is not defined.");
-        return; // Stop if critical function missing
+        return; // Stop processing if function missing
     }
 
-
-    // Add divider between clients (except after the last one)
+    // Add divider
     if (index < sortedClients.length - 1) {
       const divider = document.createElement('span');
       divider.className = 'divider';
       clientContainer.appendChild(divider);
     }
 
-    // Initialize carousel for this client (Ensure RDXENV object and method exist)
-    if (typeof RDXENV !== 'undefined' && typeof RDXENV.generateCarousel === 'function') {
+    // Initialize carousel using RDXENV helper (ensure RDXENV.generateCarousel exists)
+    if (typeof RDXENV?.generateCarousel === 'function') {
         const clientProjects = projects[client.id];
-        if (clientProjects && clientProjects.length > 0) {
-          // Ensure selectors are valid and elements exist before calling
+        if (clientProjects?.length > 0) {
           const gridSelector = `.${client.id}-project-grid`;
           const navSelector = `.${client.id}-project-nav`;
+          // Check elements exist before initializing carousel
           if (document.querySelector(gridSelector) && document.querySelector(navSelector)) {
-             RDXENV.generateCarousel(
-               clientProjects,
-               gridSelector,
-               navSelector
-             );
-          } else {
-            // This might happen if createClientSection didn't create these elements
-            // console.warn(`Carousel elements not found for client ${client.id}. Selectors: ${gridSelector}, ${navSelector}`);
+             RDXENV.generateCarousel(clientProjects, gridSelector, navSelector);
           }
         }
     } else {
@@ -167,13 +159,14 @@ function renderClientProjects(clients, projects) {
 }
 
 /**
- * Render the contact section
- * @param {Object} contactData - Contact section data
+ * Render the contact section.
+ * @param {object} contactData - Contact section data from API.
  */
 function renderContactSection(contactData) {
   const contactSection = document.getElementById('contact');
-  if (!contactSection || !contactData) return; // Added check
+  if (!contactSection || !contactData) return;
 
+  // Basic structure, assumes properties exist or uses fallbacks
   contactSection.innerHTML = `
     <h2>${contactData.title || 'Contact'}</h2>
     <div class="contact-container">
@@ -182,48 +175,56 @@ function renderContactSection(contactData) {
         ${contactData.phone ? `<div class="contact-phone"><strong>Phone:</strong> ${contactData.phone}</div>` : ''}
       </div>
       <div class="contact-social">
-        ${contactData.social ? Object.entries(contactData.social).map(([platform, url]) => `
-          <a href="${url || '#'}" target="_blank" class="social-link ${platform}">${platform}</a>
-        `).join('') : ''}
+        ${contactData.social ? Object.entries(contactData.social).map(([platform, url]) =>
+          `<a href="${url || '#'}" target="_blank" rel="noopener noreferrer" class="social-link ${platform}">${platform}</a>`
+        ).join('') : ''}
       </div>
       ${contactData.message ? `<p class="contact-message">${contactData.message}</p>` : ''}
     </div>
   `;
 }
 
+// --- Navigation Functions ---
+
 /**
- * Initialize client navigation in the projects section
- * @param {Array} clients - Array of client data
+ * Initialize client navigation buttons in the projects section.
+ * @param {Array} clients - Array of client data.
  */
 function initClientNavigation(clients) {
   const clientNav = document.querySelector('.CLientProjNAv');
-  if (!clientNav || !clients) return; // Added check
+  if (!clientNav || !clients) return;
 
-  // Clear existing navigation
-  clientNav.innerHTML = '';
+  clientNav.innerHTML = ''; // Clear existing buttons
 
-  // Create client navigation buttons
   clients.forEach((client, index) => {
-     if (!client || !client.id) return; // Skip invalid client data
-    const clientButton = document.createElement('div');
-    clientButton.className = `Client${index + 1}`; // Keep class if CSS depends on it
-    clientButton.setAttribute('data-client-id', client.id);
-    clientButton.setAttribute('title', client.name || `Client ${index + 1}`); // Add default title
+     if (!client || !client.id || !client.name) return; // Skip incomplete client data
 
-    clientButton.addEventListener('click', () => {
-      scrollToClient(client.id);
-    });
+     const clientButton = document.createElement('div');
+     // Consider using a more descriptive class name if possible
+     clientButton.className = `Client${index + 1}`; // Keep if CSS depends on it
+     clientButton.setAttribute('data-client-id', client.id);
+     clientButton.setAttribute('title', client.name);
+     clientButton.setAttribute('role', 'button'); // Accessibility
+     clientButton.tabIndex = 0; // Make it focusable
 
-    clientNav.appendChild(clientButton);
+     clientButton.addEventListener('click', () => scrollToClient(client.id));
+     // Add keyboard accessibility
+     clientButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            scrollToClient(client.id);
+        }
+     });
+
+     clientNav.appendChild(clientButton);
   });
 }
 
 /**
- * Scroll to a specific client section
- * @param {string} clientId - Client ID to scroll to
+ * Scroll smoothly to a specific client section.
+ * @param {string} clientId - Client ID to scroll to.
  */
 function scrollToClient(clientId) {
-  // Ensure clientId is valid before creating selector
+  // Basic validation
   if (!clientId || typeof clientId !== 'string' || !clientId.match(/^[a-zA-Z0-9_-]+$/)) {
     console.warn("Invalid clientId for scrolling:", clientId);
     return;
@@ -231,6 +232,7 @@ function scrollToClient(clientId) {
   const clientElement = document.getElementById(`client-${clientId}`);
   if (clientElement) {
     clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clientElement.focus(); // Improve accessibility by moving focus
   } else {
       console.warn(`Element not found for scrolling: #client-${clientId}`);
   }
