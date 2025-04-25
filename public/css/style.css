@@ -65,10 +65,7 @@ header {
 
 .name-container {
   display: grid;
-  grid-template-columns: auto auto auto;
   justify-content: start;
-  gap: 20px;
-  border: 1px solid #ceddc2;
   padding: 5px;
   margin: 0 1rem;
 }
