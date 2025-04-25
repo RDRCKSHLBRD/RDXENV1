@@ -1,10 +1,12 @@
 // public/js/main.js
 
-import { initHeroBlocks } from './modules/heroBlocks.js';
+// Import the necessary functions from heroBlocks module
+import { initHeroBlocks, startBackgroundColorTransition } from './modules/heroBlocks.js';
 
 // Assumes RDXENV object and methods are available globally (likely from utils.js)
 
 document.addEventListener('DOMContentLoaded', async () => {
+  // Initialize the application when the DOM is ready
   await initApp();
 });
 
@@ -21,9 +23,34 @@ async function getHeroConfig() {
     return await response.json();
   } catch (error) {
     console.error("Error fetching hero config:", error);
-    return null;
+    return null; // Return null to indicate failure
   }
 }
+
+/**
+ * Fetches background colour data from the API.
+ * @returns {Promise<Array|null>} - Resolves to the array of color objects or null on error.
+ */
+async function getBackgroundColours() {
+  try {
+    // Use the API route defined in api.js
+    const response = await fetch('/api/background-colours');
+    if (!response.ok) {
+      throw new Error(`API error fetching background colours: ${response.status}`);
+    }
+    const data = await response.json();
+    // Validate the expected structure
+    if (!data || !Array.isArray(data.colors)) {
+      console.error("Invalid background colour data format received:", data);
+      throw new Error("Invalid background colour data format received.");
+    }
+    return data.colors; // Return only the array of color objects
+  } catch (error) {
+    console.error("Error fetching background colours:", error);
+    return null; // Return null to indicate failure
+  }
+}
+
 
 /**
  * Initializes the application by fetching data and rendering sections.
@@ -31,28 +58,50 @@ async function getHeroConfig() {
 async function initApp() {
   console.log("Initializing app...");
   try {
-    // Load all necessary data concurrently
-    const [copyData, clientsData, projectsData, heroData, heroConfigData] = await Promise.all([
+    // Load all necessary data concurrently using Promise.all
+    const [copyData, clientsData, projectsData, heroData, heroConfigData, backgroundColours] = await Promise.all([
         RDXENV.API.getCopy(),
         RDXENV.API.getClients(),
         RDXENV.API.getAllProjects(),
         RDXENV.API.getHero(),
-        getHeroConfig()
+        getHeroConfig(),
+        getBackgroundColours() // Fetch background colours
     ]);
 
-    // Check if essential data loaded
+    // --- Essential Data Check ---
+    // Check if critical data needed for basic page function loaded
     if (!copyData || !clientsData || !projectsData || !heroData || !heroConfigData) {
-      console.error('Failed to load required data (copy, clients, projects, hero, or hero config)');
-      // Consider displaying a user-friendly error message here
-      return;
+      console.error('Failed to load essential page data (copy, clients, projects, hero, or hero config)');
+      // Optionally display a user-friendly error message on the page
+      return; // Stop initialization if critical data is missing
     }
 
-    // Initialize the dynamic hero section
-    if (document.getElementById('hero-section')) {
+    // --- Optional Data Check (Background Colours) ---
+    if (!backgroundColours) {
+      // Log a warning but allow the app to continue without the transition effect
+      console.warn('Background colour data failed to load or is invalid. Background transition feature disabled.');
+    }
+    // --- --- --- --- --- --- --- --- --- --- ---
+
+
+    // --- Initialize Hero Section ---
+    const heroElement = document.getElementById('hero-section'); // Get the hero element
+    if (heroElement) { // Check if the hero section exists in the DOM
+       // Initialize the hero content and layout first
        initHeroBlocks(heroData, heroConfigData);
-    }
 
-    // Render other sections
+       // Start the background transition *if* colours were loaded successfully
+       if (backgroundColours && backgroundColours.length > 0) {
+          // Pass the DOM element, the array of colors, and the interval time (in ms)
+          startBackgroundColorTransition(heroElement, backgroundColours, 7000); // Example: 7 seconds interval
+       }
+    } else {
+        console.warn("Hero section element (#hero-section) not found in the DOM.");
+    }
+    // --- --- --- --- --- --- ---
+
+
+    // --- Render Other Page Sections ---
     if (copyData.about && document.getElementById('about')) {
       renderAboutSection(copyData.about);
     } else {
@@ -62,31 +111,35 @@ async function initApp() {
     if (clientsData?.clients && projectsData?.projects && document.getElementById('client-container')) {
       renderClientProjects(clientsData.clients, projectsData.projects);
     } else {
-       console.warn("Client/Project data or container element missing.");
+      console.warn("Client/Project data or container element missing.");
     }
 
     if (copyData.contact && document.getElementById('contact')) {
       renderContactSection(copyData.contact);
     } else {
-       console.warn("Contact data or section element missing.");
+      console.warn("Contact data or section element missing.");
     }
 
-    // Initialize client navigation
+    // --- Initialize Navigation ---
     if (clientsData?.clients && document.querySelector('.CLientProjNAv')) {
       initClientNavigation(clientsData.clients);
     } else {
-       console.warn("Client data or navigation element missing.");
+      console.warn("Client data or navigation element missing.");
     }
+    // --- --- --- --- --- --- ---
 
     console.log("App initialization routines complete.");
 
   } catch (error) {
-    console.error('Error initializing app:', error);
-    // Consider displaying a user-friendly error message here
+    // Catch any errors during the async operations (fetching, rendering)
+    console.error('Error during app initialization:', error);
+    // Optionally display a user-friendly error message on the page
   }
 }
 
-// --- Section Rendering Functions ---
+// ==================================================
+// --- Section Rendering & Helper Functions Below ---
+// ==================================================
 
 /**
  * Render the about section.
@@ -113,43 +166,48 @@ function renderClientProjects(clients, projects) {
 
   clientContainer.innerHTML = ''; // Clear container
 
+  // Sort clients by 'order' property if it exists
   const sortedClients = [...clients].sort((a, b) => (a.order || 0) - (b.order || 0));
 
   sortedClients.forEach((client, index) => {
     if (!client || !client.id) {
         console.warn("Skipping invalid client data:", client);
-        return;
+        return; // Skip this client
     }
 
-    // Create client section using RDXENV helper (ensure RDXENV.createClientSection exists)
+    // Create client section using RDXENV helper
     if (typeof RDXENV?.createClientSection === 'function') {
-        const clientSection = RDXENV.createClientSection(client, projects[client.id] || []);
+        const clientSection = RDXENV.createClientSection(client, projects[client.id] || []); // Pass projects or empty array
         if (clientSection) {
             clientContainer.appendChild(clientSection);
         } else {
             console.warn(`Failed to create section for client: ${client.id}`);
         }
     } else {
+        // Log error only once if function is missing?
         console.error("RDXENV.createClientSection is not defined.");
-        return; // Stop processing if function missing
+        return; // Stop processing further clients if critical function missing
     }
 
-    // Add divider
+    // Add divider between client sections
     if (index < sortedClients.length - 1) {
       const divider = document.createElement('span');
       divider.className = 'divider';
       clientContainer.appendChild(divider);
     }
 
-    // Initialize carousel using RDXENV helper (ensure RDXENV.generateCarousel exists)
+    // Initialize carousel using RDXENV helper
     if (typeof RDXENV?.generateCarousel === 'function') {
         const clientProjects = projects[client.id];
         if (clientProjects?.length > 0) {
           const gridSelector = `.${client.id}-project-grid`;
           const navSelector = `.${client.id}-project-nav`;
-          // Check elements exist before initializing carousel
+          // Ensure elements exist before trying to initialize carousel
           if (document.querySelector(gridSelector) && document.querySelector(navSelector)) {
              RDXENV.generateCarousel(clientProjects, gridSelector, navSelector);
+          } else {
+             // This might happen if createClientSection didn't create these elements
+             // console.warn(`Carousel elements not found for client ${client.id}`);
           }
         }
     } else {
@@ -166,7 +224,7 @@ function renderContactSection(contactData) {
   const contactSection = document.getElementById('contact');
   if (!contactSection || !contactData) return;
 
-  // Basic structure, assumes properties exist or uses fallbacks
+  // Construct contact section HTML
   contactSection.innerHTML = `
     <h2>${contactData.title || 'Contact'}</h2>
     <div class="contact-container">
@@ -176,15 +234,14 @@ function renderContactSection(contactData) {
       </div>
       <div class="contact-social">
         ${contactData.social ? Object.entries(contactData.social).map(([platform, url]) =>
-          `<a href="${url || '#'}" target="_blank" rel="noopener noreferrer" class="social-link ${platform}">${platform}</a>`
+          // Added rel="noopener noreferrer" for security on target="_blank"
+          `<a href="${url || '#'}" target="_blank" rel="noopener noreferrer" class="social-link ${platform.toLowerCase()}">${platform}</a>`
         ).join('') : ''}
       </div>
       ${contactData.message ? `<p class="contact-message">${contactData.message}</p>` : ''}
     </div>
   `;
 }
-
-// --- Navigation Functions ---
 
 /**
  * Initialize client navigation buttons in the projects section.
@@ -197,20 +254,27 @@ function initClientNavigation(clients) {
   clientNav.innerHTML = ''; // Clear existing buttons
 
   clients.forEach((client, index) => {
-     if (!client || !client.id || !client.name) return; // Skip incomplete client data
+     // Ensure necessary client data exists
+     if (!client || !client.id || !client.name) {
+        console.warn("Skipping client nav button due to incomplete data:", client);
+        return;
+     }
 
      const clientButton = document.createElement('div');
-     // Consider using a more descriptive class name if possible
-     clientButton.className = `Client${index + 1}`; // Keep if CSS depends on it
+     // Consider a more semantic class if Client1, Client2 etc. aren't specifically styled
+     clientButton.className = `Client${index + 1} client-nav-button`; // Added generic class
      clientButton.setAttribute('data-client-id', client.id);
-     clientButton.setAttribute('title', client.name);
-     clientButton.setAttribute('role', 'button'); // Accessibility
-     clientButton.tabIndex = 0; // Make it focusable
+     clientButton.setAttribute('title', `Scroll to ${client.name}`);
+     clientButton.setAttribute('role', 'button'); // Accessibility: treat as button
+     clientButton.tabIndex = 0; // Make it focusable via keyboard
 
+     // Click event listener
      clientButton.addEventListener('click', () => scrollToClient(client.id));
-     // Add keyboard accessibility
+
+     // Keyboard event listener (Enter or Space to activate)
      clientButton.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault(); // Prevent default space bar scroll
             scrollToClient(client.id);
         }
      });
@@ -224,16 +288,32 @@ function initClientNavigation(clients) {
  * @param {string} clientId - Client ID to scroll to.
  */
 function scrollToClient(clientId) {
-  // Basic validation
+  // Validate clientId format (basic check)
   if (!clientId || typeof clientId !== 'string' || !clientId.match(/^[a-zA-Z0-9_-]+$/)) {
-    console.warn("Invalid clientId for scrolling:", clientId);
+    console.warn("Invalid clientId format for scrolling:", clientId);
     return;
   }
-  const clientElement = document.getElementById(`client-${clientId}`);
+
+  // Construct the element ID
+  const elementId = `client-${clientId}`;
+  const clientElement = document.getElementById(elementId);
+
   if (clientElement) {
+    // Scroll into view smoothly
     clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clientElement.focus(); // Improve accessibility by moving focus
+
+    // Improve accessibility: set focus to the scrolled-to section (or its heading)
+    // Using setTimeout allows the scroll to finish before setting focus
+    setTimeout(() => {
+        // Try focusing the element itself, or a heading within it
+        const focusableElement = clientElement.querySelector('h4') || clientElement;
+        if (focusableElement) {
+            focusableElement.setAttribute('tabindex', '-1'); // Make non-interactive element focusable
+            focusableElement.focus({ preventScroll: true }); // Focus without triggering another scroll
+        }
+    }, 500); // Adjust delay if needed
+
   } else {
-      console.warn(`Element not found for scrolling: #client-${clientId}`);
+      console.warn(`Element not found for scrolling: #${elementId}`);
   }
 }

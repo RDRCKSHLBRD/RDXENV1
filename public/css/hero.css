@@ -10,6 +10,8 @@
   justify-content: center;
   align-items: center;
   background-color: #14467A; /* Fallback background color */
+
+  transition: background-color 13s ease-in-out; /* <--- ADD THIS */
 }
 
 /* Background Layer */

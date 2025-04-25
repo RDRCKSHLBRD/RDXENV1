@@ -82,7 +82,7 @@ router.get('/hero', (req, res) => {
   }
 });
 
-// heroconfig
+// heroConfig
 
 router.get('/hero/config', (req, res) => {
   const data = readJsonFile('heroConfig.json'); // Use your existing helper function
@@ -90,6 +90,17 @@ router.get('/hero/config', (req, res) => {
     res.json(data);
   } else {
     res.status(500).json({ error: 'Failed to load hero configuration' });
+  }
+});
+
+// BAckgoround colour -- 
+
+router.get('/background-colours', (req, res) => {
+  const data = readJsonFile('backgroundColour.json'); // Make sure filename matches
+  if (data && data.colors) { // Check for the 'colors' array specifically
+    res.json(data);
+  } else {
+    res.status(500).json({ error: 'Failed to load background colour data' });
   }
 });
 
