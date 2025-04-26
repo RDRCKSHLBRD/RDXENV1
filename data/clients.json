@@ -89,6 +89,36 @@
         }
       ],
       "order": 3
+    },
+    {
+      "id": "Haruko-Imports",
+      "name": "Haruko Imports",
+      "shortName": "HI",
+      "logo": "/assets/images/HARUKO-logo6.svg",
+      "period": "2025 - Present",
+      "tagline": "Umbrella Content/ Retail Company",
+      "description": "something",
+      "links": [
+        {
+          "id": "gaijin-haiku",
+          "text": "Gaijin Haiku",
+          "url": "#",
+          "type": "film"
+        },
+        {
+          "id": "skiptskool",
+          "text": "SkiptSkool",
+          "url": "#",
+          "type": "app"
+        },
+        {
+          "id": "cartreform",
+          "text": "Cart Reform",
+          "url": "#",
+          "type": "app"
+        }
+      ],
+      "order": 4
     }
   ]
 }

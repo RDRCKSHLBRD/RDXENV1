@@ -37,24 +37,16 @@ a {
   color: #829d9e;
   text-decoration: none;
   transition: color 0.3s ease;
+  cursor: pointer;
+  
 }
 
 a:hover {
-  color: #a0c0c0;
+   color:#0F1D38;
 }
 
-a:active {
-  color: #608080;
-}
 
-a:visited {
-  color: #708090;
-}
 
-a.active {
-  color: #a0c0c0;
-  font-weight: 400;
-}
 
 /* Header styles =============================================================================================== */
 header {
@@ -62,7 +54,7 @@ header {
   justify-content: space-between; /* Pushes logo/name to left, nav to right */
   align-items: center; /* Vertically center items */
   background-color: #225f6e; /* Your existing color */
-  padding: 0.5rem 1rem; /* Adjust padding as needed */
+  padding: 0.8rem 1rem; /* Adjust padding as needed */
   /* Remove grid-template-columns if previously set on header */
 }
 
@@ -97,8 +89,6 @@ header {
 
 
 .nav a {
-
-  color: #0F1D38;
   text-decoration: none;
   padding: 10px 15px;
   display: block;
@@ -109,12 +99,14 @@ header {
   color: #a0c0c0;
 }
 
-.nav a:active {
-  color: #608080;
-}
+
 
 .nav a:visited {
   color: #D9E7EE;
+}
+
+.nav a:visited:hover {
+  color: #b1d235;
 }
 
 /* Main content sections  =========================================================*/
@@ -157,7 +149,7 @@ section {
   gap: 5px;
 }
 
-.Client1, .Client2, .Client3 {
+.Client1, .Client2, .Client3, .Client4 {
   display: flex;
   margin: 2px;
   margin-bottom: 5px;
@@ -168,7 +160,7 @@ section {
   transition: background-color 0.3s ease;
 }
 
-.Client1:hover, .Client2:hover, .Client3:hover {
+.Client1:hover, .Client2:hover, .Client3:hover, .Client4:hover {
   background-color: #ebefdf;
 }
 
