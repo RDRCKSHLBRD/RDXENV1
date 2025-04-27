@@ -247,28 +247,27 @@ function scrollToClient(clientId) {
     if (clientContainer) {
       console.log("Starting reflow pulse...");
 
-      // Do a micro pulse
+      // 🔥 Micro adjustment to trigger layout
       clientContainer.style.transform = 'scale(1.001)';
 
       requestAnimationFrame(() => {
         clientContainer.style.transform = 'scale(1)';
 
-        // 🧠 Wait an extra animation frame before scrolling
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            console.log(`Final scroll to: #${elementId}`);
-            clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // 🧠 NOW, insert a *true* WAIT before scroll
+        setTimeout(() => {
+          console.log(`Delayed scroll to: #${elementId}`);
+          clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            setTimeout(() => {
-              const focusableElement = clientElement.querySelector('h4') || clientElement;
-              if (focusableElement) {
-                focusableElement.setAttribute('tabindex', '-1');
-                focusableElement.focus({ preventScroll: true });
-              }
-            }, 500);
-          });
-        });
+          setTimeout(() => {
+            const focusableElement = clientElement.querySelector('h4') || clientElement;
+            if (focusableElement) {
+              focusableElement.setAttribute('tabindex', '-1');
+              focusableElement.focus({ preventScroll: true });
+            }
+          }, 500);
+        }, 150); // ⏳ <-- 150ms delay gives mobile time to finish reflow
       });
+
     } else {
       console.warn("Client container not found for reflow pulse.");
       clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -277,6 +276,7 @@ function scrollToClient(clientId) {
     console.warn(`Element not found for scrolling: #${elementId}`);
   }
 }
+
 
 
 

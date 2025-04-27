@@ -474,13 +474,6 @@ footer {
   aspect-ratio: 4 / 3;
 }
 
-/* Allow flexible aspect if needed */
-.contain-mode {
-  /* Only needed if you want contain images to have flexible sizing */
-}
-
-
-
 
 /* Responsive styles */
 @media (max-width: 768px) {
