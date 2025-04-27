@@ -318,7 +318,7 @@ section {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   gap: 7px;
-  padding: 20px;
+  padding: 10px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -336,7 +336,7 @@ section {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  margin: 3px;
+  margin: 1px;
 }
 
 .imageCont img {
@@ -437,6 +437,23 @@ footer {
 body {
   overflow-x: hidden;
 }
+
+
+.imageCont {
+  width: 99%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin: 1px;
+}
+
+.imageCont img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
 
 
   .IPCont,
