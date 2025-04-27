@@ -166,15 +166,15 @@
       {
         "id": "serenity",
         "description": "Lynn Demers | Serenity | 2010",
-        "imageUrl": "https://example.com/ld-project1.jpg",
+        "imageUrl": "/assets/images/Serenity_image4.png",
         "altText": "Lynn Demers - Serenity",
         "year": "2010",
         "type": "film"
       },
       {
         "id": "sakura-kimonos",
-        "description": "Lynn Demers | Sakura Kimonos | 2012",
-        "imageUrl": "https://example.com/ld-project2.jpg",
+        "description": "Lynn Demers | The Sakura Kimonos | 2012",
+        "imageUrl": "assets/images/SAKURA-KIMONOS_IMAGE1.png",
         "altText": "Lynn Demers - Sakura Kimonos",
         "year": "2012",
         "type": "film"
@@ -194,14 +194,6 @@
         "altText": "Lynn Demers - Value Deck Prototype",
         "year": "2020",
         "type": "app"
-      },
-      {
-        "id": "ld-project5",
-        "description": "Lynn Demers | Placeholder Project 5",
-        "imageUrl": "https://example.com/ld-project5.jpg",
-        "altText": "Lynn Demers - Project 5",
-        "year": "2021",
-        "type": "design"
       }
     ],
     "tanya-slingsby": [
