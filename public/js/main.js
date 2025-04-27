@@ -239,19 +239,45 @@ function scrollToClient(clientId) {
 
   const elementId = `client-${clientId}`;
   const clientElement = document.getElementById(elementId);
+  const clientContainer = document.getElementById('client-container');
 
   if (clientElement) {
-    clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    console.log(`Preparing to scroll to client: ${clientId}`);
 
-    setTimeout(() => {
-      const focusableElement = clientElement.querySelector('h4') || clientElement;
-      if (focusableElement) {
-        focusableElement.setAttribute('tabindex', '-1');
-        focusableElement.focus({ preventScroll: true });
-      }
-    }, 500);
+    if (clientContainer) {
+      console.log("Starting reflow pulse...");
 
+      // Do a micro pulse
+      clientContainer.style.transform = 'scale(1.001)';
+
+      requestAnimationFrame(() => {
+        clientContainer.style.transform = 'scale(1)';
+
+        // 🧠 Wait an extra animation frame before scrolling
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            console.log(`Final scroll to: #${elementId}`);
+            clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            setTimeout(() => {
+              const focusableElement = clientElement.querySelector('h4') || clientElement;
+              if (focusableElement) {
+                focusableElement.setAttribute('tabindex', '-1');
+                focusableElement.focus({ preventScroll: true });
+              }
+            }, 500);
+          });
+        });
+      });
+    } else {
+      console.warn("Client container not found for reflow pulse.");
+      clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   } else {
     console.warn(`Element not found for scrolling: #${elementId}`);
   }
 }
+
+
+
+

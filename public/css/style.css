@@ -526,10 +526,12 @@ footer {
   .TSCont {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
-    margin-bottom: 2rem;
-    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    margin: 0 auto;    /* <<< NEW: center horizontally */
+    max-width: 90%;    /* <<< NEW: prevent edge crowding */
   }
+}
 
   /* Brand block (small logo) */
   .IP-brand {
@@ -635,5 +637,5 @@ footer {
     gap: 15px;
     padding: 10px 0;
   }
-}
+
 
