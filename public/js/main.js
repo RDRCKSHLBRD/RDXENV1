@@ -120,33 +120,34 @@ function renderClientProjects(clients, projects) {
         const images = clientSection.querySelectorAll('img');
         const clientProjects = projects[client.id];
 
-        images.forEach((img, idx) => {
-          const project = clientProjects[idx];
-          if (project) {
-            img.classList.add('project-image');
+        // inside renderClientProjects
+images.forEach((img, idx) => {
+  const project = clientProjects[idx];
+  if (project) {
+    img.classList.add('project-image');
 
-            if (project.objectFit === 'cover') {
-              img.classList.add('fit-cover');
-            } else if (project.objectFit === 'contain') {
-              img.classList.add('fit-contain');
-              if (img.parentElement) {
-                img.parentElement.classList.add('contain-mode');
-              }
-            } else {
-              img.classList.add('fit-contain');
-            }
+    if (project.objectFit === 'cover') {
+      img.classList.add('fit-cover');
+    } else if (project.objectFit === 'contain') {
+      img.classList.add('fit-contain');
+    } else {
+      img.classList.add('fit-contain'); // fallback
+    }
 
-            if (img.parentElement) {
-              if (project.aspect === 'portrait') {
-                img.parentElement.classList.add('aspect-portrait');
-              } else if (project.aspect === 'landscape') {
-                img.parentElement.classList.add('aspect-landscape');
-              } else {
-                img.parentElement.classList.add('aspect-square');
-              }
-            }
-          }
-        });
+    // ⭐⭐ NEW: apply aspect class to parent container (.imageCont)
+    const parent = img.closest('.imageCont');
+    if (parent) {
+      if (project.aspect === 'portrait') {
+        parent.classList.add('aspect-portrait');
+      } else if (project.aspect === 'landscape') {
+        parent.classList.add('aspect-landscape');
+      } else {
+        parent.classList.add('aspect-square');
+      }
+    }
+  }
+});
+
         // ******** END: NEW objectFit + aspect section ********
 
       } else {

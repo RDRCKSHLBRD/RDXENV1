@@ -1,270 +1,36 @@
 {
   "projects": {
     "interstellar-packages": [
-      {
-        "id": "charlotta",
-        "description": "Interstellar Packages | Charoltta | 2005/2010",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Charlotta/1_CHARLOTTA.png",
-        "altText": "Interstellar Packages-Charlotta",
-        "year": "2005/2010",
-        "type": "album",
-        "objectFit": "cover",
-        "aspect": "square"
-      },
-      {
-        "id": "objects-particles",
-        "description": "Interstellar Packages | Objects & Particles | 2006/2010",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Objects-and-Particles/2_OBJECTS-PARTICLES.png",
-        "altText": "Interstellar Packages-Objects-and-Particles",
-        "year": "2006/2010",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "glass-city-of-us",
-        "description": "Interstellar Packages | Glass City of Us | 2005/2010",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Glass-City-of-Us/3_GLASS-CITY-OF-US.png",
-        "altText": "Interstellar Packages-Glass-CIty-of-Us",
-        "year": "2005/2010",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "new-domes",
-        "description": "Interstellar Packages | New Domes of Earth | 2005/2010",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/New-Domes-of-Earth/4_NEW-DOMES.png",
-        "altText": "Interstellar Packages-New-Domes-of-Earth",
-        "year": "2005/2010",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "natura",
-        "description": "Interstellar Packages | Natura | 2022",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Natura/5_NATURA.png",
-        "altText": "Interstellar Packages-Natura",
-        "year": "2022",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "outer-corners",
-        "description": "Interstellar Packages | Outer Corners | 2022",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Outer-Corners/6_OUTER-CORNERS.png",
-        "altText": "Interstellar Packages-Outer-Corners",
-        "year": "2022",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "nonagon",
-        "description": "Interstellar Packages | Nonagon | 2022",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Nonagon/7_NONAGON.png",
-        "altText": "Interstellar Packages-Nonagon",
-        "year": "2022",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "ambient-garden-one",
-        "description": "Interstellar Packages | Ambient Garden One | 2022",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Ambient-Garden-One/8_AMBIENTGARDENONE.png",
-        "altText": "Interstellar Packages-Ambient-Garden-One",
-        "year": "2022",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "seven-structures",
-        "description": "Interstellar Packages | Music for Seven Structures | 2022",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Music-For-Seven-Structures/9_7STRUCTURES.png",
-        "altText": "Interstellar Packages-Music-for-Seven-Structures",
-        "year": "2022",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "inner-moments",
-        "description": "Interstellar Packages | Inner Moments of Light | 2022",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Inner-Moment-of-Light/10_INNER-MOMENTS.png",
-        "altText": "Interstellar Packages-Inner-Moments-of-Light",
-        "year": "2022",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "nocturnes-reveries",
-        "description": "Interstellar Packages | Nocturnes & Reveries | 2022",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Nocturnes-and-Reveries/11_NOCTURNES-REVERIES.png",
-        "altText": "Interstellar Packages-Nocturnes-and-Reveries",
-        "year": "2022",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "prefabrication",
-        "description": "Interstellar Packages | Prefabrication | 2023",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Prefabrication/12_PREFABRICATION.png",
-        "altText": "Interstellar Packages-Prefabrication",
-        "year": "2023",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "vagary",
-        "description": "Interstellar Packages | Vagary | 2023",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Vagary/13_VAGARY.png",
-        "altText": "Interstellar Packages-Vagary",
-        "year": "2023",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "amsterdam-concreet",
-        "description": "Interstellar Packges | Amsterdam Concreet | 2023",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Amsterdam-Concreet/14_AMSTERDAM-CONCREET.png",
-        "altText": "Interstellar Packages-Amsterdam-Concreet",
-        "year": "2023",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "watercolours",
-        "description": "Interstellar Packages | Watercolours for Friends | 2023",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Watercolours-for-Friends/15_WATERCOLOURS.png",
-        "altText": "Interstellar Packages-Watercolours for Friends",
-        "year": "2023",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "postcards",
-        "description": "Interstellar Packages | Postcards from Old Sounds | 2023",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Postcards-From-Old-Sounds/16_POSTACARDS-OLD-SOUNDS.png",
-        "altText": "Interstellar Packages-Postcards from Old Sounds",
-        "year": "2023",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "sakura",
-        "description": "Interstellar Packages | Sakura | 2023",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Sakura/17_SAKURA.png",
-        "altText": "Interstellar Packages-Sakura",
-        "year": "2023",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "poem-homeworld",
-        "description": "Interstellar Packages | Poem for a Homewolrd | 2023",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Poem-For-A-Homeworld/18_POEM-HOMEWORLD.png",
-        "altText": "Interstellar Packages-Poem-for-a-Homewolrd",
-        "year": "2023",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "rhombus",
-        "description": "Interstellar Packages | Rhombus | 2023",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Rhombus/19_RHOMBUS.png",
-        "altText": "Interstellar Packages-Rhombus",
-        "year": "2023",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      },
-      {
-        "id": "vignettes-clouds",
-        "description": "Interstellar Packages | Vignettes of Clouds | 2024",
-        "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Vignettes-of-Clouds/20_Vignettes-of-Clouds.png",
-        "altText": "Interstellar Packages-Vignettes-of-Clouds",
-        "year": "2024",
-        "type": "album",
-        "objectFit": "cover",
-         "aspect": "square"
-      }
+      { "id": "charlotta", "description": "Charlotta | 2005/2010", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Charlotta/1_CHARLOTTA.png", "altText": "Interstellar Packages-Charlotta", "year": "2005/2010", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "objects-particles", "description": "Objects & Particles | 2006/2010", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Objects-and-Particles/2_OBJECTS-PARTICLES.png", "altText": "Interstellar Packages-Objects-and-Particles", "year": "2006/2010", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "glass-city-of-us", "description": "Glass City of Us | 2005/2010", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Glass-City-of-Us/3_GLASS-CITY-OF-US.png", "altText": "Interstellar Packages-Glass-CIty-of-Us", "year": "2005/2010", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "new-domes", "description": "New Domes of Earth | 2005/2010", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/New-Domes-of-Earth/4_NEW-DOMES.png", "altText": "Interstellar Packages-New-Domes-of-Earth", "year": "2005/2010", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "natura", "description": "Natura | 2022", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Natura/5_NATURA.png", "altText": "Interstellar Packages-Natura", "year": "2022", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "outer-corners", "description": "Outer Corners | 2022", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Outer-Corners/6_OUTER-CORNERS.png", "altText": "Interstellar Packages-Outer-Corners", "year": "2022", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "nonagon", "description": "Nonagon | 2022", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Nonagon/7_NONAGON.png", "altText": "Interstellar Packages-Nonagon", "year": "2022", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "ambient-garden-one", "description": "Ambient Garden One | 2022", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Ambient-Garden-One/8_AMBIENTGARDENONE.png", "altText": "Interstellar Packages-Ambient-Garden-One", "year": "2022", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "seven-structures", "description": "Music for Seven Structures | 2022", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Music-For-Seven-Structures/9_7STRUCTURES.png", "altText": "Interstellar Packages-Music-for-Seven-Structures", "year": "2022", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "inner-moments", "description": "Inner Moments of Light | 2022", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Inner-Moment-of-Light/10_INNER-MOMENTS.png", "altText": "Interstellar Packages-Inner-Moments-of-Light", "year": "2022", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "nocturnes-reveries", "description": "Nocturnes & Reveries | 2022", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Nocturnes-and-Reveries/11_NOCTURNES-REVERIES.png", "altText": "Interstellar Packages-Nocturnes-and-Reveries", "year": "2022", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "prefabrication", "description": "Prefabrication | 2023", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Prefabrication/12_PREFABRICATION.png", "altText": "Interstellar Packages-Prefabrication", "year": "2023", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "vagary", "description": "Vagary | 2023", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Vagary/13_VAGARY.png", "altText": "Interstellar Packages-Vagary", "year": "2023", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "amsterdam-concreet", "description": "Amsterdam Concreet | 2023", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Amsterdam-Concreet/14_AMSTERDAM-CONCREET.png", "altText": "Interstellar Packages-Amsterdam-Concreet", "year": "2023", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "watercolours", "description": "Watercolours for Friends | 2023", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Watercolours-for-Friends/15_WATERCOLOURS.png", "altText": "Interstellar Packages-Watercolours for Friends", "year": "2023", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "postcards", "description": "Postcards from Old Sounds | 2023", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Postcards-From-Old-Sounds/16_POSTACARDS-OLD-SOUNDS.png", "altText": "Interstellar Packages-Postcards from Old Sounds", "year": "2023", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "sakura", "description": "Sakura | 2023", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Sakura/17_SAKURA.png", "altText": "Interstellar Packages-Sakura", "year": "2023", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "poem-homeworld", "description": "Poem for a Homeworld | 2023", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Poem-For-A-Homeworld/18_POEM-HOMEWORLD.png", "altText": "Interstellar Packages-Poem-for-a-Homeworld", "year": "2023", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "rhombus", "description": "Rhombus | 2023", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Rhombus/19_RHOMBUS.png", "altText": "Interstellar Packages-Rhombus", "year": "2023", "type": "album", "objectFit": "cover", "aspect": "square" },
+      { "id": "vignettes-clouds", "description": "Vignettes of Clouds | 2024", "imageUrl": "https://storage.googleapis.com/ip-public-bucket1/Vignettes-of-Clouds/20_Vignettes-of-Clouds.png", "altText": "Interstellar Packages-Vignettes-of-Clouds", "year": "2024", "type": "album", "objectFit": "cover", "aspect": "square" }
     ],
     "lynn-demers": [
-      {
-        "id": "serenity",
-        "description": "Lynn Demers | Serenity | 2010",
-        "imageUrl": "/assets/images/Serenity_image4.png",
-        "altText": "Lynn Demers - Serenity",
-        "year": "2010",
-        "type": "film",
-        "objectFit": "cover",
-         "aspect": "landscape"
-      },
-      {
-        "id": "sakura-kimonos",
-        "description": "Lynn Demers | The Sakura Kimonos | 2012",
-        "imageUrl": "assets/images/SAKURA-KIMONOS_IMAGE1.png",
-        "altText": "Lynn Demers - Sakura Kimonos",
-        "year": "2012",
-        "type": "film",
-        "objectFit": "cover",
-         "aspect": "landscape"
-      },
-      {
-        "id": "jikan",
-        "description": "Lynn Demers | Jikan | 2015",
-        "imageUrl": "/assets/images/JIKAN-sansNOM-24smW.png",
-        "altText": "Lynn Demers - Jikan",
-        "year": "2015",
-        "type": "film",
-        "objectFit": "contain",
-         "aspect": "square"
-      },
-      {
-        "id": "value-deck",
-        "description": "Lynn Demers | Value Deck Prototype | 2020",
-        "imageUrl": "/assets/images/LDVD25-v2.svg",
-        "altText": "Lynn Demers - Value Deck Prototype",
-        "year": "2020",
-        "type": "app",
-        "objectFit": "contain",
-         "aspect": "square"
-      }
+      { "id": "serenity", "description": "Serenity | 2010", "imageUrl": "/assets/images/Serenity_image4.png", "altText": "Lynn Demers - Serenity", "year": "2010", "type": "film", "objectFit": "cover", "aspect": "landscape" },
+      { "id": "sakura-kimonos", "description": "The Sakura Kimonos | 2012", "imageUrl": "assets/images/SAKURA-KIMONOS_IMAGE1.png", "altText": "Lynn Demers - Sakura Kimonos", "year": "2012", "type": "film", "objectFit": "cover", "aspect": "landscape" },
+      { "id": "jikan", "description": "Jikan | 2015", "imageUrl": "/assets/images/JIKAN-sansNOM-24smW.png", "altText": "Lynn Demers - Jikan", "year": "2015", "type": "film", "objectFit": "contain", "aspect": "square" },
+      { "id": "value-deck", "description": "Value Deck Prototype | 2020", "imageUrl": "/assets/images/LDVD25-tiny.svg", "altText": "Lynn Demers - Value Deck Prototype", "year": "2020", "type": "app", "objectFit": "contain", "aspect": "portrait" }
     ],
     "tanya-slingsby": [
-      {
-        "id": "arcana",
-        "description": "Tanya Slingsby | ARCANA | 2010/2018",
-        "imageUrl": "/assets/images/ARACANA-IMAGE3.png",
-        "altText": "Tanya Slingsby - ARACNA",
-        "year": "2018",
-        "type": "film",
-        "objectFit": "contain",
-        "aspect": "landscape"
-      },
-      {
-        "id": "ts-atelier",
-        "description": "Tanya Slingsby | TS ATELIER | 2025",
-        "imageUrl": "/assets/images/TSATELIER-v2SM.svg",
-        "altText": "Tanya Slingsby - Online Gallery",
-        "year": "2020",
-        "type": "app",
-        "objectFit": "cover",
-         "aspect": "square"
-      }
+      { "id": "arcana", "description": "ARCANA | 2010/2018", "imageUrl": "/assets/images/ARACANA-IMAGE3.png", "altText": "Tanya Slingsby - ARACANA", "year": "2018", "type": "film", "objectFit": "contain", "aspect": "landscape" },
+      { "id": "ts-atelier", "description": "TS ATELIER | 2025", "imageUrl": "/assets/images/TSATELIER-v2SM.svg", "altText": "Tanya Slingsby - Online Gallery", "year": "2020", "type": "app", "objectFit": "cover", "aspect": "square" }
     ]
   }
 }

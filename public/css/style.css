@@ -147,6 +147,7 @@ section {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 5px;
+  justify-content: center; 
 }
 
 .Client1, .Client2, .Client3, .Client4 {
@@ -333,26 +334,34 @@ section {
 }
 
 .imageCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  
+  aspect-ratio: 1 / 1; /* Default to square for all */
   overflow: hidden;
   margin: 1px;
+  background: #0a4348; /* Optional: background color for canvas */
 }
 
 .imageCont img {
-  width: 100%;
-  height: 100%;
-  
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 
 
 
+
 .description {
   padding: 5px;
+  padding-left: 0;
   border-bottom: 1px solid #225f6e;
   margin-bottom: 2px;
-  margin-left: 5px;
+ 
   font-size: 0.8rem;
 }
 
@@ -437,6 +446,8 @@ footer {
 .project-image {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -473,60 +484,118 @@ footer {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  
+  body {
+    overflow-x: hidden;
+  }
 
+  /* Description control */
+  .description {
+    padding: 5px 10px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    text-align: left;
+    line-height: 1.6;
+    border-bottom: 1px solid #225f6e;
+  }
 
-body {
-  overflow-x: hidden;
-}
+  /* Image container and image control */
+  .imageCont {
+    width: 95%;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a4348;
+    overflow: hidden;
+  }
 
+  .imageCont img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
 
-.imageCont {
-  width: 99%;
- 
-  overflow: hidden;
-  margin: 1px;
-}
-
-.imageCont img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-
-
-
+  /* Client containers layout */
   .IPCont,
   .LDCont,
   .TSCont {
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-areas: 
-      "brand links"
-      "info info";
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 2rem;
+    width: 100%;
   }
 
+  /* Brand block (small logo) */
   .IP-brand {
-    grid-area: brand;
-    width: 90%;
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
   }
 
+  .IP-brand img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Info block (description) */
+  .ProjInfo-IP {
+    width: 90%;
+    margin: 0 auto;
+    border-left: none;
+    padding: 5px;
+    text-align: left;
+  }
+
+  /* Links block (project links) */
   .ProjLinks {
-    grid-area: links;
-    width: 85%;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-left: none;
   }
 
   .ProjLinks-title {
-    padding: 1px;
-    align-items: start;
+    font-size: 1rem;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #225f6e;
   }
 
-  .ProjLinks-link1-app a {
-    text-align: center;
+  .ProjLinks-link1-app,
+  .ProjLinks-link7-app2,
+  .ProjLinks-link9-app3,
+  .ProjLinks-link2-film1,
+  .ProjLinks-link3-film2,
+  .ProjLinks-link4-film3,
+  .ProjLinks-link5-film4,
+  .ProjLinks-link6-film5,
+  .ProjLinks-link8-film6 {
+    width: 100%;
+    padding: 5px 0;
+    font-size: 0.85rem;
+    text-align: left;
+  }
+
+  .ProjLinks-link1-app a,
+  .ProjLinks-link7-app2 a,
+  .ProjLinks-link9-app3 a {
     width: 100%;
     color: lightblue;
+    text-align: left;
   }
 
   .ProjLinks-link1-app a:visited {
@@ -542,27 +611,29 @@ body {
     color: #ffcc00;
   }
 
-  .ProjInfo-IP {
-    grid-area: info;
-    width: 93%;
+  /* Center client project navigation buttons */
+  .CLientProjNAv {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 15px 0;
   }
 
-  .IP-brand, .ProjInfo-IP {
-    height: auto;
-    padding: 10px;
-  }
-
-  .IP-brand img {
-    width: 100%;
-    height: auto;
-  }
-  
+  /* Contact section stacking */
   .contact-container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
   }
-  
+
+  /* Nav menu top (menu bar) */
   .nav ul {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
   }
 }
+
