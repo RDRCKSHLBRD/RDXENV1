@@ -334,7 +334,7 @@ section {
 
 .imageCont {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  
   overflow: hidden;
   margin: 1px;
 }
@@ -342,9 +342,11 @@ section {
 .imageCont img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  
   display: block;
 }
+
+
 
 .description {
   padding: 5px;
@@ -430,6 +432,45 @@ footer {
   font-size: 0.8rem;
 }
 
+/* object-fit control */
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.fit-cover {
+  object-fit: cover;
+  object-position: center;
+}
+
+.fit-contain {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Aspect control */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.aspect-landscape {
+  aspect-ratio: 4 / 3;
+}
+
+/* Allow flexible aspect if needed */
+.contain-mode {
+  /* Only needed if you want contain images to have flexible sizing */
+}
+
+
+
+
 /* Responsive styles */
 @media (max-width: 768px) {
 
@@ -441,7 +482,7 @@ body {
 
 .imageCont {
   width: 99%;
-  aspect-ratio: 1 / 1;
+ 
   overflow: hidden;
   margin: 1px;
 }
