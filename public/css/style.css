@@ -319,7 +319,7 @@ section {
   -webkit-overflow-scrolling: touch;
   gap: 7px;
   padding: 10px;
-  width: 100%;
+  width: 99%;
   box-sizing: border-box;
 }
 
