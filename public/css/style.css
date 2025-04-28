@@ -559,7 +559,7 @@ footer {
 }
 
   /* Brand block (small logo) */
-  .IP-brand {
+  .IP-brand, .LD-brand, .HI-brand {
     width: 80%;
     height: auto;
     margin: 0 auto;
