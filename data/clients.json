@@ -101,6 +101,12 @@
 
       "links": [
         {
+          "id": "haruko-importLink",
+          "text": "Haruko Imports",
+          "url": "#",
+          "type": "film"
+        },
+        {
           "id": "gaijin-haiku",
           "text": "Gaijin Haiku",
           "url": "#",
