@@ -547,7 +547,8 @@ footer {
   /* Client containers layout */
   .IPCont,
   .LDCont,
-  .TSCont {
+  .TSCont,
+  .HICont {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
