@@ -1,9 +1,6 @@
 // public/js/main.js
 
-// Import the necessary functions from heroBlocks module
 import { initHeroBlocks, startBackgroundColorTransition } from './modules/heroBlocks.js';
-
-// Assumes RDXENV object and methods are available globally (likely from utils.js)
 
 document.addEventListener('DOMContentLoaded', async () => {
   await initApp();
@@ -116,39 +113,34 @@ function renderClientProjects(clients, projects) {
       if (clientSection) {
         clientContainer.appendChild(clientSection);
 
-        // ******** START: NEW objectFit + aspect section ********
         const images = clientSection.querySelectorAll('img');
         const clientProjects = projects[client.id];
 
-        // inside renderClientProjects
-images.forEach((img, idx) => {
-  const project = clientProjects[idx];
-  if (project) {
-    img.classList.add('project-image');
+        images.forEach((img, idx) => {
+          const project = clientProjects?.[idx];
+          if (project) {
+            img.classList.add('project-image');
 
-    if (project.objectFit === 'cover') {
-      img.classList.add('fit-cover');
-    } else if (project.objectFit === 'contain') {
-      img.classList.add('fit-contain');
-    } else {
-      img.classList.add('fit-contain'); // fallback
-    }
+            if (project.objectFit === 'cover') {
+              img.classList.add('fit-cover');
+            } else if (project.objectFit === 'contain') {
+              img.classList.add('fit-contain');
+            } else {
+              img.classList.add('fit-contain');
+            }
 
-    // ⭐⭐ NEW: apply aspect class to parent container (.imageCont)
-    const parent = img.closest('.imageCont');
-    if (parent) {
-      if (project.aspect === 'portrait') {
-        parent.classList.add('aspect-portrait');
-      } else if (project.aspect === 'landscape') {
-        parent.classList.add('aspect-landscape');
-      } else {
-        parent.classList.add('aspect-square');
-      }
-    }
-  }
-});
-
-        // ******** END: NEW objectFit + aspect section ********
+            const parent = img.closest('.imageCont');
+            if (parent) {
+              if (project.aspect === 'portrait') {
+                parent.classList.add('aspect-portrait');
+              } else if (project.aspect === 'landscape') {
+                parent.classList.add('aspect-landscape');
+              } else {
+                parent.classList.add('aspect-square');
+              }
+            }
+          }
+        });
 
       } else {
         console.warn(`Failed to create section for client: ${client.id}`);
@@ -177,6 +169,12 @@ images.forEach((img, idx) => {
       console.error("RDXENV.generateCarousel is not defined.");
     }
   });
+
+  // 🧠 Reset calibration after everything is rendered
+  setTimeout(() => {
+    window.dispatchEvent(new Event('resize'));
+    console.log('[Calibration] Forced resize event for recalibration.');
+  }, 100);
 }
 
 function renderContactSection(contactData) {
@@ -243,21 +241,12 @@ function scrollToClient(clientId) {
 
   if (clientElement) {
     console.log(`Preparing to scroll to client: ${clientId}`);
-
     if (clientContainer) {
-      console.log("Starting reflow pulse...");
-
-      // 🔥 Micro adjustment to trigger layout
       clientContainer.style.transform = 'scale(1.001)';
-
       requestAnimationFrame(() => {
         clientContainer.style.transform = 'scale(1)';
-
-        // 🧠 NOW, insert a *true* WAIT before scroll
-        setTimeout(() => {
-          console.log(`Delayed scroll to: #${elementId}`);
+        requestAnimationFrame(() => {
           clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
           setTimeout(() => {
             const focusableElement = clientElement.querySelector('h4') || clientElement;
             if (focusableElement) {
@@ -265,19 +254,12 @@ function scrollToClient(clientId) {
               focusableElement.focus({ preventScroll: true });
             }
           }, 500);
-        }, 150); // ⏳ <-- 150ms delay gives mobile time to finish reflow
+        });
       });
-
     } else {
-      console.warn("Client container not found for reflow pulse.");
       clientElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   } else {
     console.warn(`Element not found for scrolling: #${elementId}`);
   }
 }
-
-
-
-
-
