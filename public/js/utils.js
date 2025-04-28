@@ -222,9 +222,10 @@ function createClientSection(client, projects) {
   clientElement.innerHTML = `
     <h4 class="ProjHead">${client.name}</h4>
     <div class="${client.shortName}Cont">
-      <div class="IP-brand">
-        <img src="${client.logo}" alt="${client.name} Logo">
-      </div>
+  <div class="${client.shortName}-brand">
+    <img src="${client.logo}" alt="${client.name} Logo">
+  </div>
+
       <div class="ProjInfo-IP">
         <div class="projTitle">${client.tagline} | ${client.period}</div>
         <div class="projCopy">${client.description}</div>
