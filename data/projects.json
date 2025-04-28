@@ -280,11 +280,11 @@
       {
         "id": "gaijin-haiku",
         "description": "Gaijin Haiku | 2025",
-        "imageUrl": "/assets/images/gaijin-haiku.png",
+        "imageUrl": "/assets/images/GAIJIN_HAIKUcardSVG.svg",
         "altText": "Haruko Imports - Gaijin Haiku",
         "year": "2025",
         "type": "film",
-        "objectFit": "cover",
+        "objectFit": "contain",
         "aspect": "square"
       },
       {
