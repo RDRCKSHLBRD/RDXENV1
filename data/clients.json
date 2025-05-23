@@ -7,7 +7,7 @@
       "logo": "/assets/images/IP_LOGO-aug24.svg",
       "period": "2003 - Present",
       "tagline": "Experimental Ambient Label",
-      "description": "Innovative ambient music label with 20 self-produced albums, featuring custom-designed covers and typography. Created videos including \"Films of Nature\" and \"Tidal.\" Developed label/store platform using HTML, CSS, JavaScript, React, Node.js, Express.js, PostgreSQL, and Google Cloud for content delivery. Implemented version control with Git and GitHub, deploying the backend on Render and the frontend on Netlify.",
+      "description": "Innovative ambient music label with 20 self-produced albums, featuring custom-designed covers and typography. Created videos including \"Films of Nature\" and \"Tidal.\" Developed label/store platform using HTML, CSS, JavaScript, Node.js, Express.js, PostgreSQL, and Google Cloud for content delivery. Implemented version control with Git and GitHub, deploying the backend on Render.",
       "links": [
         {
           "id": "site",
@@ -42,25 +42,25 @@
         {
           "id": "serenity",
           "text": "Serenity",
-          "url": "#",
+          "url": "https://vimeo.com/1001819119?share=copy#t=0",
           "type": "film"
         },
         {
           "id": "sakura-kimonos",
           "text": "The Sakura Kimonos",
-          "url": "#",
+          "url": "https://vimeo.com/996464876?share=copy#t=0",
           "type": "film"
         },
         {
           "id": "jikan",
           "text": "Jikan",
-          "url": "#",
+          "url": "https://vimeo.com/996489935?share=copy#t=0",
           "type": "film"
         },
         {
           "id": "value-deck",
           "text": "Value Deck | Prototype",
-          "url": "#",
+          "url": "https://xudor.github.io/_KARUTA/",
           "type": "app"
         }
       ],
@@ -103,8 +103,8 @@
         {
           "id": "haruko-importLink",
           "text": "Haruko Imports",
-          "url": "#",
-          "type": "film"
+          "url": "https://haruko-node.onrender.com/",
+          "type": "app"
         },
         {
           "id": "gaijin-haiku",
@@ -115,7 +115,7 @@
         {
           "id": "skiptskool",
           "text": "SkiptSkool",
-          "url": "#",
+          "url": "https://skiptskool.onrender.com/",
           "type": "app"
         },
         {
